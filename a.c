@@ -1,610 +1,737 @@
-
-void Sha256_Compress(uint *param_1,undefined8 *param_2)
-
+__int64 __fastcall Sha256_Compress(unsigned int *a1, uint32_t *a2)
 {
-  uint uVar1;
-  uint uVar2;
-  uint uVar3;
-  uint uVar4;
-  int iVar5;
-  uint uVar6;
-  uint uVar7;
-  int iVar8;
-  uint uVar9;
-  uint uVar10;
-  uint uVar11;
-  uint uVar12;
-  uint uVar13;
-  int iVar14;
-  uint uVar15;
-  uint uVar16;
-  uint uVar17;
-  uint uVar18;
-  uint uVar19;
-  uint uVar20;
-  uint uVar21;
-  uint uVar22;
-  uint uVar23;
-  uint uVar24;
-  int iVar25;
-  uint uVar26;
-  uint uVar27;
-  uint uVar28;
-  uint uVar29;
-  uint uVar30;
-  uint uVar31;
-  uint uVar32;
-  uint uVar33;
-  uint uVar34;
-  uint uVar35;
-  uint uVar36;
-  
-  uVar7 = *param_1;
-  uVar12 = param_1[1];
-  uVar2 = uVar7 + 0x75a999bb;
-  uVar1 = uVar7 + 0xeea44197;
-  uVar13 = param_1[2];
-  iVar14 = uVar12 + 0x93009747 +
-           ((uVar2 >> 6 | uVar2 * 0x4000000) ^ (uVar2 >> 0xb | uVar2 * 0x200000) ^
-           (uVar2 * 0x80 | uVar2 >> 0x19)) + (~uVar2 & 0xb937b0b ^ uVar2 & 0x615b450c);
-  uVar23 = iVar14 + 0xb7c84c69;
-  uVar15 = iVar14 + ((uVar1 >> 2 | uVar1 * 0x40000000) ^ (uVar1 >> 0xd | uVar1 * 0x80000) ^
-                    (uVar1 * 0x400 | uVar1 >> 0x16)) + 0x59f111f1 +
-                    (uVar1 & 0xe359765c ^ 0x14848000);
-  iVar5 = uVar13 + 0xb937b0b +
-          ((uVar23 >> 6 | uVar23 * 0x4000000) ^ (uVar23 >> 0xb | uVar23 * 0x200000) ^
-          (uVar23 * 0x80 | uVar23 >> 0x19)) + (~uVar23 & 0x615b450c ^ uVar2 & uVar23);
-  uVar18 = iVar5 + 0xea1406f4;
-  uVar3 = param_1[3];
-  uVar6 = iVar5 + ((uVar15 >> 2 | uVar15 * 0x40000000) ^ (uVar15 >> 0xd | uVar15 * 0x80000) ^
-                  (uVar15 * 0x400 | uVar15 >> 0x16)) + 0x923f82a4 +
-                  ((uVar1 ^ 0xb48df20c) & uVar15 ^ uVar1 & 0xb48df20c);
-  uVar4 = param_1[5];
-  iVar8 = uVar3 + 0x615b450c +
-          ((uVar18 >> 6 | uVar18 * 0x4000000) ^ (uVar18 >> 0xb | uVar18 * 0x200000) ^
-          (uVar18 * 0x80 | uVar18 >> 0x19)) + (~uVar18 & uVar2 ^ uVar23 & uVar18);
-  uVar2 = iVar8 + 0x5faa50e1;
-  uVar10 = param_1[4];
-  uVar9 = iVar8 + ((uVar6 >> 0xd | uVar6 * 0x80000) ^ (uVar6 >> 2 | uVar6 * 0x40000000) ^
-                  (uVar6 * 0x400 | uVar6 >> 0x16)) + 0xab1c5ed5 +
-                  ((uVar1 ^ uVar15) & uVar6 ^ uVar1 & uVar15);
-  iVar25 = ((uVar2 * 0x80 | uVar2 >> 0x19) ^
-           (uVar2 >> 0xb | uVar2 * 0x200000) ^ (uVar2 >> 6 | uVar2 * 0x4000000)) +
-           uVar7 + 0x4db14453 + uVar10 + (~uVar2 & uVar23 ^ uVar18 & uVar2);
-  uVar1 = uVar1 + iVar25;
-  uVar26 = iVar25 + ((uVar15 ^ uVar6) & uVar9 ^ uVar15 & uVar6) +
-                    ((uVar9 >> 0xd | uVar9 * 0x80000) ^ (uVar9 >> 2 | uVar9 * 0x40000000) ^
-                    (uVar9 * 0x400 | uVar9 >> 0x16));
-  iVar14 = ((uVar1 * 0x80 | uVar1 >> 0x19) ^
-           (uVar1 >> 0xb | uVar1 * 0x200000) ^ (uVar1 >> 6 | uVar1 * 0x4000000)) +
-           iVar14 + -0x35b45896 + uVar4 + (~uVar1 & uVar18 ^ uVar2 & uVar1);
-  uVar31 = param_1[6];
-  uVar15 = uVar15 + iVar14;
-  uVar23 = iVar14 + ((uVar6 ^ uVar9) & uVar26 ^ uVar6 & uVar9) +
-                    ((uVar26 >> 0xd | uVar26 * 0x80000) ^ (uVar26 >> 2 | uVar26 * 0x40000000) ^
-                    (uVar26 * 0x400 | uVar26 >> 0x16));
-  iVar5 = ((uVar15 * 0x80 | uVar15 >> 0x19) ^
-          (uVar15 >> 0xb | uVar15 * 0x200000) ^ (uVar15 >> 6 | uVar15 * 0x4000000)) +
-          iVar5 + 0xe458cb2 + uVar31 + (~uVar15 & uVar2 ^ uVar1 & uVar15);
-  uVar6 = uVar6 + iVar5;
-  uVar32 = uVar4 + 0xdf91e031;
-  uVar11 = param_1[7];
-  uVar18 = iVar5 + ((uVar9 ^ uVar26) & uVar23 ^ uVar9 & uVar26) +
-                   ((uVar23 >> 0xd | uVar23 * 0x80000) ^ (uVar23 >> 2 | uVar23 * 0x40000000) ^
-                   (uVar23 * 0x400 | uVar23 >> 0x16));
-  iVar5 = ((uVar6 * 0x80 | uVar6 >> 0x19) ^
-          (uVar6 >> 0xb | uVar6 * 0x200000) ^ (uVar6 >> 6 | uVar6 * 0x4000000)) +
-          iVar8 + -0x4b49315c + uVar11 + (~uVar6 & uVar1 ^ uVar15 & uVar6);
-  uVar9 = uVar9 + iVar5;
-  uVar16 = iVar5 + ((uVar26 ^ uVar23) & uVar18 ^ uVar26 & uVar23) +
-                   ((uVar18 >> 0xd | uVar18 * 0x80000) ^ (uVar18 >> 2 | uVar18 * 0x40000000) ^
-                   (uVar18 * 0x400 | uVar18 >> 0x16));
-  iVar5 = uVar1 + 0xdaf1bceb +
-          ((uVar9 >> 0xb | uVar9 * 0x200000) ^ (uVar9 >> 6 | uVar9 * 0x4000000) ^
-          (uVar9 * 0x80 | uVar9 >> 0x19)) + (~uVar9 & uVar15 ^ uVar6 & uVar9);
-  uVar26 = uVar26 + iVar5;
-  uVar2 = iVar5 + ((uVar23 ^ uVar18) & uVar16 ^ uVar23 & uVar18) +
-                  ((uVar16 >> 0xd | uVar16 * 0x80000) ^ (uVar16 >> 2 | uVar16 * 0x40000000) ^
-                  (uVar16 * 0x400 | uVar16 >> 0x16));
-  iVar5 = uVar15 + 0xca2d2f7e +
-          ((uVar26 >> 0xb | uVar26 * 0x200000) ^ (uVar26 >> 6 | uVar26 * 0x4000000) ^
-          (uVar26 * 0x80 | uVar26 >> 0x19)) + (~uVar26 & uVar6 ^ uVar9 & uVar26);
-  uVar23 = uVar23 + iVar5;
-  uVar1 = iVar5 + ((uVar18 ^ uVar16) & uVar2 ^ uVar18 & uVar16) +
-                  ((uVar2 >> 0xd | uVar2 * 0x80000) ^ (uVar2 >> 2 | uVar2 * 0x40000000) ^
-                  (uVar2 * 0x400 | uVar2 >> 0x16));
-  iVar5 = uVar6 + 0x9bdc06a7 +
-          ((uVar23 >> 0xb | uVar23 * 0x200000) ^ (uVar23 >> 6 | uVar23 * 0x4000000) ^
-          (uVar23 * 0x80 | uVar23 >> 0x19)) + (~uVar23 & uVar9 ^ uVar26 & uVar23);
-  uVar18 = uVar18 + iVar5;
-  uVar6 = iVar5 + ((uVar16 ^ uVar2) & uVar1 ^ uVar16 & uVar2) +
-                  ((uVar1 >> 0xd | uVar1 * 0x80000) ^ (uVar1 >> 2 | uVar1 * 0x40000000) ^
-                  (uVar1 * 0x400 | uVar1 >> 0x16));
-  iVar5 = uVar9 + 0xc19bf32c +
-          ((uVar18 >> 0xb | uVar18 * 0x200000) ^ (uVar18 >> 6 | uVar18 * 0x4000000) ^
-          (uVar18 * 0x80 | uVar18 >> 0x19)) + (~uVar18 & uVar26 ^ uVar23 & uVar18);
-  uVar16 = uVar16 + iVar5;
-  uVar9 = iVar5 + ((uVar2 ^ uVar1) & uVar6 ^ uVar2 & uVar1) +
-                  ((uVar6 >> 0xd | uVar6 * 0x80000) ^ (uVar6 >> 2 | uVar6 * 0x40000000) ^
-                  (uVar6 * 0x400 | uVar6 >> 0x16));
-  iVar5 = ((uVar16 * 0x80 | uVar16 >> 0x19) ^
-          (uVar16 >> 0xb | uVar16 * 0x200000) ^ (uVar16 >> 6 | uVar16 * 0x4000000)) +
-          uVar4 + 0xc42d49f2 + uVar26 + (~uVar16 & uVar23 ^ uVar18 & uVar16);
-  uVar2 = uVar2 + iVar5;
-  uVar29 = iVar5 + ((uVar1 ^ uVar6) & uVar9 ^ uVar1 & uVar6) +
-                   ((uVar9 >> 0xd | uVar9 * 0x80000) ^ (uVar9 >> 2 | uVar9 * 0x40000000) ^
-                   (uVar9 * 0x400 | uVar9 >> 0x16));
-  uVar15 = uVar31 + 0xf4a2f6bd;
-  iVar5 = ((uVar2 * 0x80 | uVar2 >> 0x19) ^
-          (uVar2 >> 0xb | uVar2 * 0x200000) ^ (uVar2 >> 6 | uVar2 * 0x4000000)) +
-          uVar31 + 0xe4613e43 + uVar23 + (~uVar2 & uVar18 ^ uVar16 & uVar2);
-  uVar1 = uVar1 + iVar5;
-  uVar26 = iVar5 + ((uVar6 ^ uVar9) & uVar29 ^ uVar6 & uVar9) +
-                   ((uVar29 >> 0xd | uVar29 * 0x80000) ^ (uVar29 >> 2 | uVar29 * 0x40000000) ^
-                   (uVar29 * 0x400 | uVar29 >> 0x16));
-  uVar23 = uVar11 + 0xc21502b2 +
-           ((uVar32 * 0x2000 | uVar32 >> 0x13) ^ (uVar32 * 0x8000 | uVar32 >> 0x11) ^ uVar32 >> 1 0);
-  iVar5 = ((uVar1 * 0x80 | uVar1 >> 0x19) ^
-          (uVar1 >> 0xb | uVar1 * 0x200000) ^ (uVar1 >> 6 | uVar1 * 0x4000000)) +
-          uVar18 + 0xfc19dc6 + uVar23 + (~uVar1 & uVar16 ^ uVar2 & uVar1);
-  uVar6 = uVar6 + iVar5;
-  uVar24 = iVar5 + ((uVar9 ^ uVar29) & uVar26 ^ uVar9 & uVar29) +
-                   ((uVar26 >> 0xd | uVar26 * 0x80000) ^ (uVar26 >> 2 | uVar26 * 0x40000000) ^
-                   (uVar26 * 0x400 | uVar26 >> 0x16));
-  uVar18 = ((uVar7 << 0xe | uVar7 >> 0x12) ^ (uVar7 >> 7 | uVar7 << 0x19) ^ uVar7 >> 3) + 0x98a5b eeb
-           + ((uVar15 * 0x2000 | uVar15 >> 0x13) ^ (uVar15 * 0x8000 | uVar15 >> 0x11) ^ uVar15 >>  10
-             );
-  iVar5 = ((uVar6 * 0x80 | uVar6 >> 0x19) ^
-          (uVar6 >> 0xb | uVar6 * 0x200000) ^ (uVar6 >> 6 | uVar6 * 0x4000000)) +
-          uVar16 + 0x240ca1cc + uVar18 + (~uVar6 & uVar2 ^ uVar1 & uVar6);
-  uVar9 = uVar9 + iVar5;
-  uVar19 = iVar5 + ((uVar29 ^ uVar26) & uVar24 ^ uVar29 & uVar26) +
-                   ((uVar24 >> 0xd | uVar24 * 0x80000) ^ (uVar24 >> 2 | uVar24 * 0x40000000) ^
-                   (uVar24 * 0x400 | uVar24 >> 0x16));
-  uVar20 = uVar7 + 0x494e7d80 +
-           ((uVar12 << 0xe | uVar12 >> 0x12) ^ (uVar12 >> 7 | uVar12 << 0x19) ^ uVar12 >> 3) +
-           ((uVar23 * 0x2000 | uVar23 >> 0x13) ^ (uVar23 * 0x8000 | uVar23 >> 0x11) ^ uVar23 >> 1 0);
-  iVar5 = ((uVar9 * 0x80 | uVar9 >> 0x19) ^
-          (uVar9 >> 0xb | uVar9 * 0x200000) ^ (uVar9 >> 6 | uVar9 * 0x4000000)) +
-          uVar2 + 0x2de92c6f + uVar20 + (~uVar9 & uVar1 ^ uVar6 & uVar9);
-  uVar29 = uVar29 + iVar5;
-  uVar17 = iVar5 + ((uVar26 ^ uVar24) & uVar19 ^ uVar26 & uVar24) +
-                   ((uVar19 >> 0xd | uVar19 * 0x80000) ^ (uVar19 >> 2 | uVar19 * 0x40000000) ^
-                   (uVar19 * 0x400 | uVar19 >> 0x16));
-  uVar2 = ((uVar13 << 0xe | uVar13 >> 0x12) ^ (uVar13 >> 7 | uVar13 << 0x19) ^ uVar13 >> 3) + uVa r12
-          + ((uVar18 * 0x2000 | uVar18 >> 0x13) ^ (uVar18 * 0x8000 | uVar18 >> 0x11) ^ uVar18 >> 10)
-  ;
-  iVar5 = ((uVar29 * 0x80 | uVar29 >> 0x19) ^
-          (uVar29 >> 0xb | uVar29 * 0x200000) ^ (uVar29 >> 6 | uVar29 * 0x4000000)) +
-          uVar1 + 0x4a7484aa + uVar2 + (~uVar29 & uVar6 ^ uVar9 & uVar29);
-  uVar26 = uVar26 + iVar5;
-  uVar1 = iVar5 + ((uVar24 ^ uVar19) & uVar17 ^ uVar24 & uVar19) +
-                  ((uVar17 >> 0xd | uVar17 * 0x80000) ^ (uVar17 >> 2 | uVar17 * 0x40000000) ^
-                  (uVar17 * 0x400 | uVar17 >> 0x16));
-  uVar33 = uVar13 + 0x1b8 +
-           ((uVar3 << 0xe | uVar3 >> 0x12) ^ (uVar3 >> 7 | uVar3 << 0x19) ^ uVar3 >> 3) +
-           ((uVar20 * 0x2000 | uVar20 >> 0x13) ^ (uVar20 * 0x8000 | uVar20 >> 0x11) ^ uVar20 >> 1 0);
-  iVar5 = ((uVar26 * 0x80 | uVar26 >> 0x19) ^
-          (uVar26 >> 0xb | uVar26 * 0x200000) ^ (uVar26 >> 6 | uVar26 * 0x4000000)) +
-          uVar6 + 0x5cb0a9dc + uVar33 + (~uVar26 & uVar9 ^ uVar29 & uVar26);
-  uVar24 = uVar24 + iVar5;
-  uVar16 = iVar5 + ((uVar19 ^ uVar17) & uVar1 ^ uVar19 & uVar17) +
-                   ((uVar1 >> 0xd | uVar1 * 0x80000) ^ (uVar1 >> 2 | uVar1 * 0x40000000) ^
-                   (uVar1 * 0x400 | uVar1 >> 0x16));
-  uVar34 = (uVar10 >> 3 ^ (uVar10 << 0xe | uVar10 >> 0x12) ^ (uVar10 >> 7 | uVar10 << 0x19)) +
-           uVar32 + uVar3 +
-           ((uVar2 * 0x2000 | uVar2 >> 0x13) ^ (uVar2 * 0x8000 | uVar2 >> 0x11) ^ uVar2 >> 10);
-  iVar5 = ((uVar24 * 0x80 | uVar24 >> 0x19) ^
-          (uVar24 >> 0xb | uVar24 * 0x200000) ^ (uVar24 >> 6 | uVar24 * 0x4000000)) +
-          uVar9 + 0x76f988da + uVar34 + (~uVar24 & uVar29 ^ uVar26 & uVar24);
-  uVar19 = uVar19 + iVar5;
-  uVar6 = iVar5 + ((uVar17 ^ uVar1) & uVar16 ^ uVar17 & uVar1) +
-                  ((uVar16 >> 0xd | uVar16 * 0x80000) ^ (uVar16 >> 2 | uVar16 * 0x40000000) ^
-                  (uVar16 * 0x400 | uVar16 >> 0x16));
-  uVar35 = (uVar4 >> 3 ^ (uVar4 << 0xe | uVar4 >> 0x12) ^ (uVar4 >> 7 | uVar4 << 0x19)) +
-           uVar15 + uVar10 +
-           ((uVar33 * 0x2000 | uVar33 >> 0x13) ^ (uVar33 * 0x8000 | uVar33 >> 0x11) ^ uVar33 >> 1 0);
-  iVar5 = ((uVar19 * 0x80 | uVar19 >> 0x19) ^
-          (uVar19 >> 0xb | uVar19 * 0x200000) ^ (uVar19 >> 6 | uVar19 * 0x4000000)) +
-          uVar29 + 0x983e5152 + uVar35 + (~uVar19 & uVar26 ^ uVar24 & uVar19);
-  uVar17 = uVar17 + iVar5;
-  uVar10 = iVar5 + ((uVar1 ^ uVar16) & uVar6 ^ uVar1 & uVar16) +
-                   ((uVar6 >> 0xd | uVar6 * 0x80000) ^ (uVar6 >> 2 | uVar6 * 0x40000000) ^
-                   (uVar6 * 0x400 | uVar6 >> 0x16));
-  uVar36 = ((uVar34 * 0x2000 | uVar34 >> 0x13) ^ (uVar34 * 0x8000 | uVar34 >> 0x11) ^ uVar34 >> 1 0)
-           + ((uVar31 << 0xe | uVar31 >> 0x12) ^ (uVar31 >> 7 | uVar31 << 0x19) ^ uVar31 >> 3) +
-             uVar4 + uVar23;
-  iVar5 = ((uVar17 * 0x80 | uVar17 >> 0x19) ^
-          (uVar17 >> 0xb | uVar17 * 0x200000) ^ (uVar17 >> 6 | uVar17 * 0x4000000)) +
-          uVar26 + 0xa831c66d + uVar36 + (~uVar17 & uVar24 ^ uVar19 & uVar17);
-  uVar1 = uVar1 + iVar5;
-  uVar29 = iVar5 + ((uVar16 ^ uVar6) & uVar10 ^ uVar16 & uVar6) +
-                   ((uVar10 >> 0xd | uVar10 * 0x80000) ^ (uVar10 >> 2 | uVar10 * 0x40000000) ^
-                   (uVar10 * 0x400 | uVar10 >> 0x16));
-  uVar30 = ((uVar35 * 0x2000 | uVar35 >> 0x13) ^ (uVar35 * 0x8000 | uVar35 >> 0x11) ^ uVar35 >> 1 0)
-           + ((uVar11 << 0xe | uVar11 >> 0x12) ^ (uVar11 >> 7 | uVar11 << 0x19) ^ uVar11 >> 3) +
-             uVar31 + uVar18;
-  iVar5 = ((uVar1 * 0x80 | uVar1 >> 0x19) ^
-          (uVar1 >> 0xb | uVar1 * 0x200000) ^ (uVar1 >> 6 | uVar1 * 0x4000000)) +
-          uVar24 + 0xb00327c8 + uVar30 + (~uVar1 & uVar19 ^ uVar17 & uVar1);
-  uVar16 = uVar16 + iVar5;
-  uVar31 = iVar5 + ((uVar6 ^ uVar10) & uVar29 ^ uVar6 & uVar10) +
-                   ((uVar29 >> 0xd | uVar29 * 0x80000) ^ (uVar29 >> 2 | uVar29 * 0x40000000) ^
-                   (uVar29 * 0x400 | uVar29 >> 0x16));
-  uVar9 = uVar11 + 0x340bd75c + uVar20 +
-          (uVar36 >> 10 ^ (uVar36 * 0x2000 | uVar36 >> 0x13) ^ (uVar36 * 0x8000 | uVar36 >> 0x11) );
-  iVar5 = ((uVar16 * 0x80 | uVar16 >> 0x19) ^
-          (uVar16 >> 0xb | uVar16 * 0x200000) ^ (uVar16 >> 6 | uVar16 * 0x4000000)) +
-          uVar19 + 0xbf597fc7 + uVar9 + (~uVar16 & uVar17 ^ uVar1 & uVar16);
-  uVar6 = uVar6 + iVar5;
-  uVar26 = iVar5 + ((uVar10 ^ uVar29) & uVar31 ^ uVar10 & uVar29) +
-                   ((uVar31 >> 0xd | uVar31 * 0x80000) ^ (uVar31 >> 2 | uVar31 * 0x40000000) ^
-                   (uVar31 * 0x400 | uVar31 >> 0x16));
-  uVar7 = (uVar2 - 0xf15f71) +
-          ((uVar30 * 0x2000 | uVar30 >> 0x13) ^ (uVar30 * 0x8000 | uVar30 >> 0x11) ^ uVar30 >> 10 );
-  iVar5 = ((uVar6 * 0x80 | uVar6 >> 0x19) ^
-          (uVar6 >> 0xb | uVar6 * 0x200000) ^ (uVar6 >> 6 | uVar6 * 0x4000000)) +
-          uVar17 + 0xc6e00bf3 + uVar7 + (~uVar6 & uVar1 ^ uVar16 & uVar6);
-  uVar10 = uVar10 + iVar5;
-  uVar19 = iVar5 + ((uVar29 ^ uVar31) & uVar26 ^ uVar29 & uVar31) +
-                   ((uVar26 >> 0xd | uVar26 * 0x80000) ^ (uVar26 >> 2 | uVar26 * 0x40000000) ^
-                   (uVar26 * 0x400 | uVar26 >> 0x16));
-  uVar12 = uVar33 + 0x494e7d80 +
-           ((uVar9 * 0x2000 | uVar9 >> 0x13) ^ (uVar9 * 0x8000 | uVar9 >> 0x11) ^ uVar9 >> 10);
-  iVar5 = ((uVar10 * 0x80 | uVar10 >> 0x19) ^
-          (uVar10 >> 0xb | uVar10 * 0x200000) ^ (uVar10 >> 6 | uVar10 * 0x4000000)) +
-          uVar1 + 0xd5a79147 + uVar12 + (~uVar10 & uVar16 ^ uVar6 & uVar10);
-  uVar29 = uVar29 + iVar5;
-  uVar17 = iVar5 + ((uVar31 ^ uVar26) & uVar19 ^ uVar31 & uVar26) +
-                   ((uVar19 >> 0xd | uVar19 * 0x80000) ^ (uVar19 >> 2 | uVar19 * 0x40000000) ^
-                   (uVar19 * 0x400 | uVar19 >> 0x16));
-  uVar13 = uVar34 + 0x706e0034 +
-           ((uVar7 * 0x2000 | uVar7 >> 0x13) ^ (uVar7 * 0x8000 | uVar7 >> 0x11) ^ uVar7 >> 10);
-  iVar5 = ((uVar29 * 0x80 | uVar29 >> 0x19) ^
-          (uVar29 >> 0xb | uVar29 * 0x200000) ^ (uVar29 >> 6 | uVar29 * 0x4000000)) +
-          uVar16 + 0x6ca6351 + uVar13 + (~uVar29 & uVar6 ^ uVar10 & uVar29);
-  uVar31 = uVar31 + iVar5;
-  uVar16 = iVar5 + ((uVar26 ^ uVar19) & uVar17 ^ uVar26 & uVar19) +
-                   ((uVar17 >> 0xd | uVar17 * 0x80000) ^ (uVar17 >> 2 | uVar17 * 0x40000000) ^
-                   (uVar17 * 0x400 | uVar17 >> 0x16));
-  uVar3 = ((uVar12 * 0x2000 | uVar12 >> 0x13) ^ (uVar12 * 0x8000 | uVar12 >> 0x11) ^ uVar12 >> 10 ) +
-          uVar35 + 0x1b8 +
-          ((uVar32 * 0x4000 | uVar32 >> 0x12) ^ (uVar32 >> 7 | uVar32 * 0x2000000) ^ uVar32 >> 3) ;
-  iVar5 = ((uVar31 * 0x80 | uVar31 >> 0x19) ^
-          (uVar31 >> 0xb | uVar31 * 0x200000) ^ (uVar31 >> 6 | uVar31 * 0x4000000)) +
-          uVar6 + 0x14292967 + uVar3 + (~uVar31 & uVar10 ^ uVar29 & uVar31);
-  uVar26 = uVar26 + iVar5;
-  uVar6 = iVar5 + ((uVar19 ^ uVar17) & uVar16 ^ uVar19 & uVar17) +
-                  ((uVar16 >> 0xd | uVar16 * 0x80000) ^ (uVar16 >> 2 | uVar16 * 0x40000000) ^
-                  (uVar16 * 0x400 | uVar16 >> 0x16));
-  uVar4 = ((uVar15 * 0x4000 | uVar15 >> 0x12) ^ (uVar15 >> 7 | uVar15 * 0x2000000) ^ uVar15 >> 3)  +
-          uVar32 + uVar36 +
-          ((uVar13 * 0x2000 | uVar13 >> 0x13) ^ (uVar13 * 0x8000 | uVar13 >> 0x11) ^ uVar13 >> 10 );
-  iVar5 = ((uVar26 * 0x80 | uVar26 >> 0x19) ^
-          (uVar26 >> 0xb | uVar26 * 0x200000) ^ (uVar26 >> 6 | uVar26 * 0x4000000)) +
-          uVar10 + 0x27b70a85 + uVar4 + (~uVar26 & uVar29 ^ uVar31 & uVar26);
-  uVar19 = uVar19 + iVar5;
-  uVar10 = iVar5 + ((uVar17 ^ uVar16) & uVar6 ^ uVar17 & uVar16) +
-                   ((uVar6 >> 0xd | uVar6 * 0x80000) ^ (uVar6 >> 2 | uVar6 * 0x40000000) ^
-                   (uVar6 * 0x400 | uVar6 >> 0x16));
-  uVar1 = ((uVar23 * 0x4000 | uVar23 >> 0x12) ^ (uVar23 >> 7 | uVar23 * 0x2000000) ^ uVar23 >> 3)  +
-          uVar15 + uVar30 +
-          ((uVar3 * 0x2000 | uVar3 >> 0x13) ^ (uVar3 * 0x8000 | uVar3 >> 0x11) ^ uVar3 >> 10);
-  iVar5 = ((uVar19 * 0x80 | uVar19 >> 0x19) ^
-          (uVar19 >> 0xb | uVar19 * 0x200000) ^ (uVar19 >> 6 | uVar19 * 0x4000000)) +
-          uVar29 + 0x2e1b2138 + uVar1 + (~uVar19 & uVar31 ^ uVar26 & uVar19);
-  uVar17 = uVar17 + iVar5;
-  uVar11 = ((uVar16 ^ uVar6) & uVar10 ^ uVar16 & uVar6) +
-           ((uVar10 >> 0xd | uVar10 * 0x80000) ^ (uVar10 >> 2 | uVar10 * 0x40000000) ^
-           (uVar10 * 0x400 | uVar10 >> 0x16)) + iVar5;
-  uVar23 = ((uVar18 * 0x4000 | uVar18 >> 0x12) ^ (uVar18 >> 7 | uVar18 * 0x2000000) ^ uVar18 >> 3 ) +
-           uVar23 + uVar9 +
-           ((uVar4 * 0x2000 | uVar4 >> 0x13) ^ (uVar4 * 0x8000 | uVar4 >> 0x11) ^ uVar4 >> 10);
-  iVar5 = ((uVar17 * 0x80 | uVar17 >> 0x19) ^
-          (uVar17 >> 0xb | uVar17 * 0x200000) ^ (uVar17 >> 6 | uVar17 * 0x4000000)) +
-          uVar31 + 0x4d2c6dfc + uVar23 + (~uVar17 & uVar26 ^ uVar19 & uVar17);
-  uVar16 = uVar16 + iVar5;
-  uVar31 = ((uVar6 ^ uVar10) & uVar11 ^ uVar6 & uVar10) +
-           ((uVar11 >> 0xd | uVar11 * 0x80000) ^ (uVar11 >> 2 | uVar11 * 0x40000000) ^
-           (uVar11 * 0x400 | uVar11 >> 0x16)) + iVar5;
-  uVar27 = ((uVar20 * 0x4000 | uVar20 >> 0x12) ^ (uVar20 >> 7 | uVar20 * 0x2000000) ^ uVar20 >> 3 ) +
-           uVar18 + uVar7 +
-           ((uVar1 * 0x2000 | uVar1 >> 0x13) ^ (uVar1 * 0x8000 | uVar1 >> 0x11) ^ uVar1 >> 10);
-  iVar5 = ((uVar16 * 0x80 | uVar16 >> 0x19) ^
-          (uVar16 >> 0xb | uVar16 * 0x200000) ^ (uVar16 >> 6 | uVar16 * 0x4000000)) +
-          uVar26 + 0x53380d13 + uVar27 + (~uVar16 & uVar19 ^ uVar17 & uVar16);
-  uVar6 = uVar6 + iVar5;
-  uVar28 = ((uVar10 ^ uVar11) & uVar31 ^ uVar10 & uVar11) +
-           ((uVar31 >> 0xd | uVar31 * 0x80000) ^ (uVar31 >> 2 | uVar31 * 0x40000000) ^
-           (uVar31 * 0x400 | uVar31 >> 0x16)) + iVar5;
-  uVar21 = uVar12 + ((uVar2 * 0x4000 | uVar2 >> 0x12) ^ (uVar2 >> 7 | uVar2 * 0x2000000) ^
-                    uVar2 >> 3) + uVar20 +
-           ((uVar23 * 0x2000 | uVar23 >> 0x13) ^ (uVar23 * 0x8000 | uVar23 >> 0x11) ^ uVar23 >> 1 0);
-  iVar5 = ((uVar6 * 0x80 | uVar6 >> 0x19) ^
-          (uVar6 >> 0xb | uVar6 * 0x200000) ^ (uVar6 >> 6 | uVar6 * 0x4000000)) +
-          uVar19 + 0x650a7354 + uVar21 + (~uVar6 & uVar17 ^ uVar16 & uVar6);
-  uVar10 = uVar10 + iVar5;
-  uVar22 = ((uVar11 ^ uVar31) & uVar28 ^ uVar11 & uVar31) +
-           ((uVar28 >> 0xd | uVar28 * 0x80000) ^ (uVar28 >> 2 | uVar28 * 0x40000000) ^
-           (uVar28 * 0x400 | uVar28 >> 0x16)) + iVar5;
-  uVar15 = ((uVar33 * 0x4000 | uVar33 >> 0x12) ^ (uVar33 >> 7 | uVar33 * 0x2000000) ^ uVar33 >> 3 ) +
-           uVar2 + uVar13 +
-           ((uVar27 * 0x2000 | uVar27 >> 0x13) ^ (uVar27 * 0x8000 | uVar27 >> 0x11) ^ uVar27 >> 1 0);
-  iVar5 = ((uVar10 * 0x80 | uVar10 >> 0x19) ^
-          (uVar10 >> 0xb | uVar10 * 0x200000) ^ (uVar10 >> 6 | uVar10 * 0x4000000)) +
-          uVar17 + 0x766a0abb + uVar15 + (~uVar10 & uVar16 ^ uVar6 & uVar10);
-  uVar11 = uVar11 + iVar5;
-  uVar32 = ((uVar31 ^ uVar28) & uVar22 ^ uVar31 & uVar28) +
-           ((uVar22 >> 0xd | uVar22 * 0x80000) ^ (uVar22 >> 2 | uVar22 * 0x40000000) ^
-           (uVar22 * 0x400 | uVar22 >> 0x16)) + iVar5;
-  uVar26 = ((uVar34 * 0x4000 | uVar34 >> 0x12) ^ (uVar34 >> 7 | uVar34 * 0x2000000) ^ uVar34 >> 3 ) +
-           uVar33 + uVar3 +
-           ((uVar21 * 0x2000 | uVar21 >> 0x13) ^ (uVar21 * 0x8000 | uVar21 >> 0x11) ^ uVar21 >> 1 0);
-  iVar5 = ((uVar11 * 0x80 | uVar11 >> 0x19) ^
-          (uVar11 >> 0xb | uVar11 * 0x200000) ^ (uVar11 >> 6 | uVar11 * 0x4000000)) +
-          uVar16 + 0x81c2c92e + uVar26 + (~uVar11 & uVar6 ^ uVar10 & uVar11);
-  uVar31 = uVar31 + iVar5;
-  uVar29 = ((uVar28 ^ uVar22) & uVar32 ^ uVar28 & uVar22) +
-           ((uVar32 >> 0xd | uVar32 * 0x80000) ^ (uVar32 >> 2 | uVar32 * 0x40000000) ^
-           (uVar32 * 0x400 | uVar32 >> 0x16)) + iVar5;
-  uVar16 = ((uVar35 * 0x4000 | uVar35 >> 0x12) ^ (uVar35 >> 7 | uVar35 * 0x2000000) ^ uVar35 >> 3 ) +
-           uVar34 + uVar4 +
-           ((uVar15 * 0x2000 | uVar15 >> 0x13) ^ (uVar15 * 0x8000 | uVar15 >> 0x11) ^ uVar15 >> 1 0);
-  iVar5 = ((uVar31 * 0x80 | uVar31 >> 0x19) ^
-          (uVar31 >> 0xb | uVar31 * 0x200000) ^ (uVar31 >> 6 | uVar31 * 0x4000000)) +
-          uVar6 + 0x92722c85 + uVar16 + (~uVar31 & uVar10 ^ uVar11 & uVar31);
-  uVar28 = uVar28 + iVar5;
-  uVar24 = ((uVar22 ^ uVar32) & uVar29 ^ uVar22 & uVar32) +
-           ((uVar29 >> 0xd | uVar29 * 0x80000) ^ (uVar29 >> 2 | uVar29 * 0x40000000) ^
-           (uVar29 * 0x400 | uVar29 >> 0x16)) + iVar5;
-  uVar17 = ((uVar36 * 0x4000 | uVar36 >> 0x12) ^ (uVar36 >> 7 | uVar36 * 0x2000000) ^ uVar36 >> 3 ) +
-           uVar35 + uVar1 +
-           ((uVar26 * 0x2000 | uVar26 >> 0x13) ^ (uVar26 * 0x8000 | uVar26 >> 0x11) ^ uVar26 >> 1 0);
-  iVar5 = ((uVar28 * 0x80 | uVar28 >> 0x19) ^
-          (uVar28 >> 0xb | uVar28 * 0x200000) ^ (uVar28 >> 6 | uVar28 * 0x4000000)) +
-          uVar10 + 0xa2bfe8a1 + uVar17 + (~uVar28 & uVar11 ^ uVar31 & uVar28);
-  uVar22 = uVar22 + iVar5;
-  uVar20 = iVar5 + ((uVar32 ^ uVar29) & uVar24 ^ uVar32 & uVar29) +
-                   ((uVar24 >> 0xd | uVar24 * 0x80000) ^ (uVar24 >> 2 | uVar24 * 0x40000000) ^
-                   (uVar24 * 0x400 | uVar24 >> 0x16));
-  uVar18 = ((uVar30 * 0x4000 | uVar30 >> 0x12) ^ (uVar30 >> 7 | uVar30 * 0x2000000) ^ uVar30 >> 3 ) +
-           uVar36 + uVar23 +
-           ((uVar16 * 0x2000 | uVar16 >> 0x13) ^ (uVar16 * 0x8000 | uVar16 >> 0x11) ^ uVar16 >> 1 0);
-  iVar5 = ((uVar22 * 0x80 | uVar22 >> 0x19) ^
-          (uVar22 >> 0xb | uVar22 * 0x200000) ^ (uVar22 >> 6 | uVar22 * 0x4000000)) +
-          uVar11 + 0xa81a664b + uVar18 + (~uVar22 & uVar31 ^ uVar28 & uVar22);
-  uVar32 = uVar32 + iVar5;
-  uVar10 = iVar5 + ((uVar29 ^ uVar24) & uVar20 ^ uVar29 & uVar24) +
-                   ((uVar20 >> 0xd | uVar20 * 0x80000) ^ (uVar20 >> 2 | uVar20 * 0x40000000) ^
-                   (uVar20 * 0x400 | uVar20 >> 0x16));
-  uVar11 = ((uVar9 * 0x4000 | uVar9 >> 0x12) ^ (uVar9 >> 7 | uVar9 * 0x2000000) ^ uVar9 >> 3) +
-           uVar30 + uVar27 +
-           ((uVar17 * 0x2000 | uVar17 >> 0x13) ^ (uVar17 * 0x8000 | uVar17 >> 0x11) ^ uVar17 >> 1 0);
-  iVar5 = ((uVar32 * 0x80 | uVar32 >> 0x19) ^
-          (uVar32 >> 0xb | uVar32 * 0x200000) ^ (uVar32 >> 6 | uVar32 * 0x4000000)) +
-          uVar31 + 0xc24b8b70 + uVar11 + (~uVar32 & uVar28 ^ uVar22 & uVar32);
-  uVar29 = uVar29 + iVar5;
-  uVar19 = iVar5 + ((uVar24 ^ uVar20) & uVar10 ^ uVar24 & uVar20) +
-                   ((uVar10 >> 0xd | uVar10 * 0x80000) ^ (uVar10 >> 2 | uVar10 * 0x40000000) ^
-                   (uVar10 * 0x400 | uVar10 >> 0x16));
-  uVar31 = ((uVar7 * 0x4000 | uVar7 >> 0x12) ^ (uVar7 >> 7 | uVar7 * 0x2000000) ^ uVar7 >> 3) +
-           uVar9 + uVar21 +
-           ((uVar18 * 0x2000 | uVar18 >> 0x13) ^ (uVar18 * 0x8000 | uVar18 >> 0x11) ^ uVar18 >> 1 0);
-  iVar5 = ((uVar29 * 0x80 | uVar29 >> 0x19) ^
-          (uVar29 >> 0xb | uVar29 * 0x200000) ^ (uVar29 >> 6 | uVar29 * 0x4000000)) +
-          uVar28 + 0xc76c51a3 + uVar31 + (~uVar29 & uVar22 ^ uVar32 & uVar29);
-  uVar24 = uVar24 + iVar5;
-  uVar28 = iVar5 + ((uVar20 ^ uVar10) & uVar19 ^ uVar20 & uVar10) +
-                   ((uVar19 >> 0xd | uVar19 * 0x80000) ^ (uVar19 >> 2 | uVar19 * 0x40000000) ^
-                   (uVar19 * 0x400 | uVar19 >> 0x16));
-  uVar6 = ((uVar12 * 0x4000 | uVar12 >> 0x12) ^ (uVar12 >> 7 | uVar12 * 0x2000000) ^ uVar12 >> 3)  +
-          uVar7 + uVar15 +
-          ((uVar11 * 0x2000 | uVar11 >> 0x13) ^ (uVar11 * 0x8000 | uVar11 >> 0x11) ^ uVar11 >> 10 );
-  iVar5 = ((uVar24 * 0x80 | uVar24 >> 0x19) ^
-          (uVar24 >> 0xb | uVar24 * 0x200000) ^ (uVar24 >> 6 | uVar24 * 0x4000000)) +
-          uVar22 + 0xd192e819 + uVar6 + (~uVar24 & uVar32 ^ uVar29 & uVar24);
-  uVar20 = uVar20 + iVar5;
-  uVar2 = iVar5 + ((uVar10 ^ uVar19) & uVar28 ^ uVar10 & uVar19) +
-                  ((uVar28 >> 0xd | uVar28 * 0x80000) ^ (uVar28 >> 2 | uVar28 * 0x40000000) ^
-                  (uVar28 * 0x400 | uVar28 >> 0x16));
-  uVar12 = ((uVar13 * 0x4000 | uVar13 >> 0x12) ^ (uVar13 >> 7 | uVar13 * 0x2000000) ^ uVar13 >> 3 ) +
-           uVar12 + uVar26 +
-           ((uVar31 * 0x2000 | uVar31 >> 0x13) ^ (uVar31 * 0x8000 | uVar31 >> 0x11) ^ uVar31 >> 1 0);
-  iVar5 = ((uVar20 * 0x80 | uVar20 >> 0x19) ^
-          (uVar20 >> 0xb | uVar20 * 0x200000) ^ (uVar20 >> 6 | uVar20 * 0x4000000)) +
-          uVar32 + 0xd6990624 + uVar12 + (~uVar20 & uVar29 ^ uVar24 & uVar20);
-  uVar10 = uVar10 + iVar5;
-  uVar9 = iVar5 + ((uVar19 ^ uVar28) & uVar2 ^ uVar19 & uVar28) +
-                  ((uVar2 >> 0xd | uVar2 * 0x80000) ^ (uVar2 >> 2 | uVar2 * 0x40000000) ^
-                  (uVar2 * 0x400 | uVar2 >> 0x16));
-  uVar32 = ((uVar3 * 0x4000 | uVar3 >> 0x12) ^ (uVar3 >> 7 | uVar3 * 0x2000000) ^ uVar3 >> 3) +
-           uVar13 + uVar16 +
-           ((uVar6 * 0x2000 | uVar6 >> 0x13) ^ (uVar6 * 0x8000 | uVar6 >> 0x11) ^ uVar6 >> 10);
-  iVar5 = ((uVar10 * 0x80 | uVar10 >> 0x19) ^
-          (uVar10 >> 0xb | uVar10 * 0x200000) ^ (uVar10 >> 6 | uVar10 * 0x4000000)) +
-          uVar29 + 0xf40e3585 + uVar32 + (~uVar10 & uVar24 ^ uVar20 & uVar10);
-  uVar19 = uVar19 + iVar5;
-  uVar22 = iVar5 + ((uVar28 ^ uVar2) & uVar9 ^ uVar28 & uVar2) +
-                   ((uVar9 >> 0xd | uVar9 * 0x80000) ^ (uVar9 >> 2 | uVar9 * 0x40000000) ^
-                   (uVar9 * 0x400 | uVar9 >> 0x16));
-  uVar29 = ((uVar4 * 0x4000 | uVar4 >> 0x12) ^ (uVar4 >> 7 | uVar4 * 0x2000000) ^ uVar4 >> 3) +
-           uVar3 + uVar17 +
-           ((uVar12 * 0x2000 | uVar12 >> 0x13) ^ (uVar12 * 0x8000 | uVar12 >> 0x11) ^ uVar12 >> 1 0);
-  iVar5 = ((uVar19 * 0x80 | uVar19 >> 0x19) ^
-          (uVar19 >> 0xb | uVar19 * 0x200000) ^ (uVar19 >> 6 | uVar19 * 0x4000000)) +
-          uVar24 + 0x106aa070 + uVar29 + (~uVar19 & uVar20 ^ uVar10 & uVar19);
-  uVar28 = uVar28 + iVar5;
-  uVar33 = iVar5 + ((uVar2 ^ uVar9) & uVar22 ^ uVar2 & uVar9) +
-                   ((uVar22 >> 0xd | uVar22 * 0x80000) ^ (uVar22 >> 2 | uVar22 * 0x40000000) ^
-                   (uVar22 * 0x400 | uVar22 >> 0x16));
-  uVar24 = ((uVar32 * 0x2000 | uVar32 >> 0x13) ^ (uVar32 * 0x8000 | uVar32 >> 0x11) ^ uVar32 >> 1 0)
-           + ((uVar1 * 0x4000 | uVar1 >> 0x12) ^ (uVar1 >> 7 | uVar1 * 0x2000000) ^ uVar1 >> 3) +
-             uVar4 + uVar18;
-  iVar5 = ((uVar28 * 0x80 | uVar28 >> 0x19) ^
-          (uVar28 >> 0xb | uVar28 * 0x200000) ^ (uVar28 >> 6 | uVar28 * 0x4000000)) +
-          uVar20 + 0x19a4c116 + uVar24 + (~uVar28 & uVar10 ^ uVar19 & uVar28);
-  uVar2 = uVar2 + iVar5;
-  uVar30 = iVar5 + ((uVar33 >> 0xd | uVar33 * 0x80000) ^ (uVar33 >> 2 | uVar33 * 0x40000000) ^
-                   (uVar33 * 0x400 | uVar33 >> 0x16)) + ((uVar9 ^ uVar22) & uVar33 ^ uVar9 & uVar 22)
-  ;
-  uVar35 = uVar1 + (uVar23 >> 3 ^
-                   (uVar23 * 0x4000 | uVar23 >> 0x12) ^ (uVar23 >> 7 | uVar23 * 0x2000000)) + uVa r11
-           + ((uVar29 * 0x2000 | uVar29 >> 0x13) ^ (uVar29 * 0x8000 | uVar29 >> 0x11) ^ uVar29 >>  10
-             );
-  iVar5 = uVar10 + 0x1e376c08 + uVar35 +
-          ((uVar2 * 0x80 | uVar2 >> 0x19) ^
-          (uVar2 >> 0xb | uVar2 * 0x200000) ^ (uVar2 >> 6 | uVar2 * 0x4000000)) +
-          (~uVar2 & uVar19 ^ uVar28 & uVar2);
-  uVar9 = uVar9 + iVar5;
-  uVar1 = iVar5 + ((uVar22 ^ uVar33) & uVar30 ^ uVar22 & uVar33) +
-                  ((uVar30 >> 0xd | uVar30 * 0x80000) ^ (uVar30 >> 2 | uVar30 * 0x40000000) ^
-                  (uVar30 * 0x400 | uVar30 >> 0x16));
-  uVar4 = ((uVar27 * 0x4000 | uVar27 >> 0x12) ^ (uVar27 >> 7 | uVar27 * 0x2000000) ^ uVar27 >> 3)  +
-          uVar23 + uVar31 +
-          ((uVar24 * 0x2000 | uVar24 >> 0x13) ^ (uVar24 * 0x8000 | uVar24 >> 0x11) ^ uVar24 >> 10 );
-  iVar5 = ((uVar9 * 0x80 | uVar9 >> 0x19) ^
-          (uVar9 >> 0xb | uVar9 * 0x200000) ^ (uVar9 >> 6 | uVar9 * 0x4000000)) +
-          uVar19 + 0x2748774c + uVar4 + (~uVar9 & uVar28 ^ uVar2 & uVar9);
-  uVar22 = uVar22 + iVar5;
-  uVar34 = iVar5 + ((uVar33 ^ uVar30) & uVar1 ^ uVar33 & uVar30) +
-                   ((uVar1 >> 0xd | uVar1 * 0x80000) ^ (uVar1 >> 2 | uVar1 * 0x40000000) ^
-                   (uVar1 * 0x400 | uVar1 >> 0x16));
-  uVar7 = ((uVar21 * 0x4000 | uVar21 >> 0x12) ^ (uVar21 >> 7 | uVar21 * 0x2000000) ^ uVar21 >> 3)  +
-          uVar27 + uVar6 +
-          ((uVar35 * 0x2000 | uVar35 >> 0x13) ^ (uVar35 * 0x8000 | uVar35 >> 0x11) ^ uVar35 >> 10 );
-  iVar5 = ((uVar22 * 0x80 | uVar22 >> 0x19) ^
-          (uVar22 >> 0xb | uVar22 * 0x200000) ^ (uVar22 >> 6 | uVar22 * 0x4000000)) +
-          uVar28 + 0x34b0bcb5 + uVar7 + (~uVar22 & uVar2 ^ uVar9 & uVar22);
-  uVar33 = uVar33 + iVar5;
-  uVar10 = iVar5 + ((uVar30 ^ uVar1) & uVar34 ^ uVar30 & uVar1) +
-                   ((uVar34 >> 0xd | uVar34 * 0x80000) ^ (uVar34 >> 2 | uVar34 * 0x40000000) ^
-                   (uVar34 * 0x400 | uVar34 >> 0x16));
-  uVar19 = ((uVar15 * 0x4000 | uVar15 >> 0x12) ^ (uVar15 >> 7 | uVar15 * 0x2000000) ^ uVar15 >> 3 ) +
-           uVar21 + uVar12 +
-           ((uVar4 * 0x2000 | uVar4 >> 0x13) ^ (uVar4 * 0x8000 | uVar4 >> 0x11) ^ uVar4 >> 10);
-  iVar5 = ((uVar33 * 0x80 | uVar33 >> 0x19) ^
-          (uVar33 >> 0xb | uVar33 * 0x200000) ^ (uVar33 >> 6 | uVar33 * 0x4000000)) +
-          uVar2 + 0x391c0cb3 + uVar19 + (~uVar33 & uVar9 ^ uVar22 & uVar33);
-  uVar30 = uVar30 + iVar5;
-  uVar21 = iVar5 + ((uVar1 ^ uVar34) & uVar10 ^ uVar1 & uVar34) +
-                   ((uVar10 >> 0xd | uVar10 * 0x80000) ^ (uVar10 >> 2 | uVar10 * 0x40000000) ^
-                   (uVar10 * 0x400 | uVar10 >> 0x16));
-  uVar15 = ((uVar26 * 0x4000 | uVar26 >> 0x12) ^ (uVar26 >> 7 | uVar26 * 0x2000000) ^ uVar26 >> 3 ) +
-           uVar15 + uVar32 +
-           ((uVar7 * 0x2000 | uVar7 >> 0x13) ^ (uVar7 * 0x8000 | uVar7 >> 0x11) ^ uVar7 >> 10);
-  iVar5 = ((uVar30 * 0x80 | uVar30 >> 0x19) ^
-          (uVar30 >> 0xb | uVar30 * 0x200000) ^ (uVar30 >> 6 | uVar30 * 0x4000000)) +
-          uVar9 + 0x4ed8aa4a + uVar15 + (~uVar30 & uVar22 ^ uVar33 & uVar30);
-  uVar1 = uVar1 + iVar5;
-  uVar20 = iVar5 + ((uVar34 ^ uVar10) & uVar21 ^ uVar34 & uVar10) +
-                   ((uVar21 >> 0xd | uVar21 * 0x80000) ^ (uVar21 >> 2 | uVar21 * 0x40000000) ^
-                   (uVar21 * 0x400 | uVar21 >> 0x16));
-  uVar13 = ((uVar16 * 0x4000 | uVar16 >> 0x12) ^ (uVar16 >> 7 | uVar16 * 0x2000000) ^ uVar16 >> 3 ) +
-           uVar26 + uVar29 +
-           ((uVar19 * 0x2000 | uVar19 >> 0x13) ^ (uVar19 * 0x8000 | uVar19 >> 0x11) ^ uVar19 >> 1 0);
-  iVar5 = ((uVar1 * 0x80 | uVar1 >> 0x19) ^
-          (uVar1 >> 0xb | uVar1 * 0x200000) ^ (uVar1 >> 6 | uVar1 * 0x4000000)) +
-          uVar22 + 0x5b9cca4f + uVar13 + (~uVar1 & uVar33 ^ uVar30 & uVar1);
-  uVar34 = uVar34 + iVar5;
-  uVar26 = iVar5 + ((uVar10 ^ uVar21) & uVar20 ^ uVar10 & uVar21) +
-                   ((uVar20 >> 0xd | uVar20 * 0x80000) ^ (uVar20 >> 2 | uVar20 * 0x40000000) ^
-                   (uVar20 * 0x400 | uVar20 >> 0x16));
-  uVar3 = ((uVar17 * 0x4000 | uVar17 >> 0x12) ^ (uVar17 >> 7 | uVar17 * 0x2000000) ^ uVar17 >> 3)  +
-          uVar16 + uVar24 +
-          ((uVar15 * 0x2000 | uVar15 >> 0x13) ^ (uVar15 * 0x8000 | uVar15 >> 0x11) ^ uVar15 >> 10 );
-  iVar5 = ((uVar34 * 0x80 | uVar34 >> 0x19) ^
-          (uVar34 >> 0xb | uVar34 * 0x200000) ^ (uVar34 >> 6 | uVar34 * 0x4000000)) +
-          uVar33 + 0x682e6ff3 + uVar3 + (~uVar34 & uVar30 ^ uVar1 & uVar34);
-  uVar10 = uVar10 + iVar5;
-  uVar9 = iVar5 + ((uVar21 ^ uVar20) & uVar26 ^ uVar21 & uVar20) +
-                  ((uVar26 >> 0xd | uVar26 * 0x80000) ^ (uVar26 >> 2 | uVar26 * 0x40000000) ^
-                  (uVar26 * 0x400 | uVar26 >> 0x16));
-  uVar16 = ((uVar18 * 0x4000 | uVar18 >> 0x12) ^ (uVar18 >> 7 | uVar18 * 0x2000000) ^ uVar18 >> 3 ) +
-           uVar17 + uVar35 +
-           ((uVar13 * 0x2000 | uVar13 >> 0x13) ^ (uVar13 * 0x8000 | uVar13 >> 0x11) ^ uVar13 >> 1 0);
-  iVar5 = ((uVar10 * 0x80 | uVar10 >> 0x19) ^
-          (uVar10 >> 0xb | uVar10 * 0x200000) ^ (uVar10 >> 6 | uVar10 * 0x4000000)) +
-          uVar30 + 0x748f82ee + uVar16 + (~uVar10 & uVar1 ^ uVar34 & uVar10);
-  uVar21 = uVar21 + iVar5;
-  uVar23 = iVar5 + ((uVar20 ^ uVar26) & uVar9 ^ uVar20 & uVar26) +
-                   ((uVar9 >> 0xd | uVar9 * 0x80000) ^ (uVar9 >> 2 | uVar9 * 0x40000000) ^
-                   (uVar9 * 0x400 | uVar9 >> 0x16));
-  uVar2 = ((uVar11 * 0x4000 | uVar11 >> 0x12) ^ (uVar11 >> 7 | uVar11 * 0x2000000) ^ uVar11 >> 3)  +
-          uVar18 + uVar4 +
-          ((uVar3 * 0x2000 | uVar3 >> 0x13) ^ (uVar3 * 0x8000 | uVar3 >> 0x11) ^ uVar3 >> 10);
-  iVar5 = ((uVar21 * 0x80 | uVar21 >> 0x19) ^
-          (uVar21 >> 0xb | uVar21 * 0x200000) ^ (uVar21 >> 6 | uVar21 * 0x4000000)) +
-          uVar1 + 0x78a5636f + uVar2 + (~uVar21 & uVar34 ^ uVar10 & uVar21);
-  uVar20 = uVar20 + iVar5;
-  uVar4 = iVar5 + ((uVar26 ^ uVar9) & uVar23 ^ uVar26 & uVar9) +
-                  ((uVar23 >> 0xd | uVar23 * 0x80000) ^ (uVar23 >> 2 | uVar23 * 0x40000000) ^
-                  (uVar23 * 0x400 | uVar23 >> 0x16));
-  uVar1 = ((uVar31 * 0x4000 | uVar31 >> 0x12) ^ (uVar31 >> 7 | uVar31 * 0x2000000) ^ uVar31 >> 3)  +
-          uVar11 + uVar7 +
-          ((uVar16 * 0x2000 | uVar16 >> 0x13) ^ (uVar16 * 0x8000 | uVar16 >> 0x11) ^ uVar16 >> 10 );
-  iVar5 = ((uVar20 * 0x80 | uVar20 >> 0x19) ^
-          (uVar20 >> 0xb | uVar20 * 0x200000) ^ (uVar20 >> 6 | uVar20 * 0x4000000)) +
-          uVar34 + 0x84c87814 + uVar1 + (~uVar20 & uVar10 ^ uVar21 & uVar20);
-  uVar26 = uVar26 + iVar5;
-  uVar18 = ((uVar9 ^ uVar23) & uVar4 ^ uVar9 & uVar23) +
-           ((uVar4 >> 0xd | uVar4 * 0x80000) ^ (uVar4 >> 2 | uVar4 * 0x40000000) ^
-           (uVar4 * 0x400 | uVar4 >> 0x16)) + iVar5;
-  uVar2 = ((uVar6 * 0x4000 | uVar6 >> 0x12) ^ (uVar6 >> 7 | uVar6 * 0x2000000) ^ uVar6 >> 3) +
-          uVar31 + uVar19 +
-          ((uVar2 * 0x2000 | uVar2 >> 0x13) ^ (uVar2 * 0x8000 | uVar2 >> 0x11) ^ uVar2 >> 10);
-  iVar5 = uVar10 + 0x8cc70208 + uVar2 +
-          ((uVar26 * 0x80 | uVar26 >> 0x19) ^
-          (uVar26 >> 0xb | uVar26 * 0x200000) ^ (uVar26 >> 6 | uVar26 * 0x4000000)) +
-          (~uVar26 & uVar21 ^ uVar20 & uVar26);
-  uVar9 = uVar9 + iVar5;
-  uVar7 = ((uVar23 ^ uVar4) & uVar18 ^ uVar23 & uVar4) +
-          ((uVar18 >> 0xd | uVar18 * 0x80000) ^ (uVar18 >> 2 | uVar18 * 0x40000000) ^
-          (uVar18 * 0x400 | uVar18 >> 0x16)) + iVar5;
-  uVar1 = ((uVar12 * 0x4000 | uVar12 >> 0x12) ^ (uVar12 >> 7 | uVar12 * 0x2000000) ^ uVar12 >> 3)  +
-          uVar6 + uVar15 +
-          ((uVar1 * 0x2000 | uVar1 >> 0x13) ^ (uVar1 * 0x8000 | uVar1 >> 0x11) ^ uVar1 >> 10);
-  iVar5 = ((uVar9 * 0x80 | uVar9 >> 0x19) ^
-          (uVar9 >> 0xb | uVar9 * 0x200000) ^ (uVar9 >> 6 | uVar9 * 0x4000000)) +
-          uVar21 + 0x90befffa + uVar1 + (~uVar9 & uVar20 ^ uVar26 & uVar9);
-  uVar23 = uVar23 + iVar5;
-  uVar10 = ((uVar4 ^ uVar18) & uVar7 ^ uVar4 & uVar18) +
-           ((uVar7 >> 0xd | uVar7 * 0x80000) ^ (uVar7 >> 2 | uVar7 * 0x40000000) ^
-           (uVar7 * 0x400 | uVar7 >> 0x16)) + iVar5;
-  uVar2 = ((uVar32 * 0x4000 | uVar32 >> 0x12) ^ (uVar32 >> 7 | uVar32 * 0x2000000) ^ uVar32 >> 3)  +
-          uVar12 + uVar13 +
-          ((uVar2 * 0x2000 | uVar2 >> 0x13) ^ (uVar2 * 0x8000 | uVar2 >> 0x11) ^ uVar2 >> 10);
-  iVar5 = ((uVar23 * 0x80 | uVar23 >> 0x19) ^
-          (uVar23 >> 0xb | uVar23 * 0x200000) ^ (uVar23 >> 6 | uVar23 * 0x4000000)) +
-          uVar20 + 0xa4506ceb + uVar2 + (~uVar23 & uVar26 ^ uVar9 & uVar23);
-  uVar4 = uVar4 + iVar5;
-  uVar12 = ((uVar18 ^ uVar7) & uVar10 ^ uVar18 & uVar7) +
-           ((uVar10 >> 0xd | uVar10 * 0x80000) ^ (uVar10 >> 2 | uVar10 * 0x40000000) ^
-           (uVar10 * 0x400 | uVar10 >> 0x16)) + iVar5;
-  iVar5 = uVar32 + 0xbef9a3f7 +
-          ((uVar29 * 0x4000 | uVar29 >> 0x12) ^ (uVar29 >> 7 | uVar29 * 0x2000000) ^ uVar29 >> 3)  +
-          uVar3 + ((uVar1 * 0x2000 | uVar1 >> 0x13) ^ (uVar1 * 0x8000 | uVar1 >> 0x11) ^ uVar1 >>  10
-                  ) + uVar26 +
-          ((uVar4 >> 6 | uVar4 * 0x4000000) ^ (uVar4 >> 0xb | uVar4 * 0x200000) ^
-          (uVar4 * 0x80 | uVar4 >> 0x19)) + (~uVar4 & uVar9 ^ uVar23 & uVar4);
-  uVar18 = uVar18 + iVar5;
-  uVar1 = ((uVar12 >> 2 | uVar12 * 0x40000000) ^ (uVar12 >> 0xd | uVar12 * 0x80000) ^
-          (uVar12 * 0x400 | uVar12 >> 0x16)) + ((uVar7 ^ uVar10) & uVar12 ^ uVar7 & uVar10) + iVa r5;
-  iVar5 = uVar9 + uVar29 + 0xc67178f2 +
-                  (uVar24 >> 3 ^
-                  (uVar24 * 0x4000 | uVar24 >> 0x12) ^ (uVar24 >> 7 | uVar24 * 0x2000000)) + uVar 16
-                  + ((uVar2 * 0x8000 | uVar2 >> 0x11) ^ (uVar2 * 0x2000 | uVar2 >> 0x13) ^
-                    uVar2 >> 10) +
-          ((uVar18 >> 6 | uVar18 * 0x4000000) ^ (uVar18 >> 0xb | uVar18 * 0x200000) ^
-          (uVar18 * 0x80 | uVar18 >> 0x19)) + (~uVar18 & uVar23 ^ uVar4 & uVar18);
-  *(uint *)(param_2 + 2) = uVar7 + 0x510e527f + iVar5;
-  *(uint *)((long)param_2 + 0x14) = uVar18 + 0x9b05688c;
-  *(uint *)(param_2 + 3) = uVar4 + 0x1f83d9ab;
-  *(uint *)((long)param_2 + 0x1c) = uVar23 + 0x5be0cd19;
-  *param_2 = CONCAT44(uVar1 + 0xbb67ae85,
-                      ((uVar1 >> 2 | uVar1 * 0x40000000) ^ (uVar1 >> 0xd | uVar1 * 0x80000) ^
-                      (uVar1 * 0x400 | uVar1 >> 0x16)) + 0x6a09e667 +
-                      ((uVar10 ^ uVar12) & uVar1 ^ uVar10 & uVar12) + iVar5);
-  param_2[1] = CONCAT44(uVar10 + 0xa54ff53a,uVar12 + 0x3c6ef372);
-  return;
-}
+  unsigned int v2; // r9d
+  unsigned int v3; // r10d
+  unsigned int v4; // eax
+  int v5; // esi
+  int v6; // r8d
+  int v7; // r11d
+  int v8; // ecx
+  unsigned int v9; // esi
+  int v10; // ecx
+  int v11; // ebp
+  int v12; // r13d
+  unsigned int v13; // ecx
+  unsigned int v14; // r15d
+  int v15; // edx
+  int v16; // ebx
+  unsigned int v17; // edx
+  int v18; // r11d
+  unsigned int v19; // eax
+  int v20; // r11d
+  int v21; // r10d
+  unsigned int v22; // esi
+  int v23; // r10d
+  int v24; // r8d
+  unsigned int v25; // ecx
+  int v26; // r8d
+  int v27; // edi
+  unsigned int v28; // edx
+  int v29; // edi
+  int v30; // eax
+  int v31; // r11d
+  int v32; // eax
+  int v33; // esi
+  int v34; // r10d
+  int v35; // esi
+  int v36; // ecx
+  int v37; // r8d
+  int v38; // ecx
+  int v39; // edx
+  int v40; // edi
+  int v41; // edx
+  int v42; // r12d
+  int v43; // eax
+  int v44; // r12d
+  int v45; // ebp
+  int v46; // esi
+  int v47; // ebp
+  unsigned int v48; // ebx
+  int v49; // r10d
+  int v50; // ecx
+  int v51; // r10d
+  unsigned int v52; // r11d
+  int v53; // r8d
+  int v54; // edx
+  int v55; // r8d
+  unsigned int v56; // r9d
+  int v57; // edi
+  int v58; // r12d
+  int v59; // edi
+  int v60; // eax
+  int v61; // ebp
+  int v62; // eax
+  int v63; // esi
+  int v64; // r10d
+  int v65; // esi
+  int v66; // ecx
+  int v67; // r8d
+  int v68; // ecx
+  int v69; // edx
+  int v70; // edi
+  int v71; // edx
+  int v72; // r14d
+  int v73; // eax
+  int v74; // r14d
+  int v75; // r12d
+  int v76; // esi
+  int v77; // r12d
+  int v78; // ebp
+  int v79; // ecx
+  int v80; // ebp
+  int v81; // r13d
+  int v82; // edx
+  int v83; // r13d
+  unsigned int v84; // r10d
+  int v85; // r8d
+  int v86; // r14d
+  int v87; // r8d
+  int v88; // edi
+  int v89; // r12d
+  int v90; // edi
+  int v91; // esi
+  int v92; // ebp
+  int v93; // esi
+  int v94; // eax
+  int v95; // r13d
+  int v96; // eax
+  unsigned int v97; // r15d
+  int v98; // ecx
+  int v99; // r8d
+  int v100; // edx
+  unsigned int v101; // r14d
+  int v102; // ebx
+  int v103; // edi
+  int v104; // ecx
+  int v105; // ebx
+  int v106; // esi
+  int v107; // r11d
+  int v108; // ebx
+  int v109; // eax
+  int v110; // r9d
+  int v111; // ebx
+  int v112; // edx
+  int v113; // r8d
+  int v114; // ebx
+  int v115; // ecx
+  int v116; // edi
+  int v117; // ebx
+  int v118; // r11d
+  int v119; // esi
+  int v120; // ebp
+  int v121; // r9d
+  int v122; // ebp
+  int v123; // eax
+  int v124; // r8d
+  int v125; // eax
+  int v126; // ebx
+  int v127; // edi
+  int v128; // ebx
+  int v129; // r11d
+  int v130; // esi
+  int v131; // r11d
+  unsigned int v132; // r12d
+  int v133; // ecx
+  int v134; // ebp
+  int v135; // ecx
+  unsigned int v136; // r13d
+  int v137; // edx
+  int v138; // eax
+  int v139; // edx
+  int v140; // r12d
+  int v141; // edi
+  unsigned int v142; // r12d
+  int v143; // r8d
+  int v144; // ebx
+  int v145; // r8d
+  int v146; // r13d
+  int v147; // r11d
+  int v148; // r13d
+  int v149; // r12d
+  int v150; // esi
+  int v151; // r12d
+  unsigned int v152; // r15d
+  int v153; // eax
+  int v154; // edx
+  int v155; // eax
+  unsigned int v156; // edi
+  int v157; // r14d
+  int v158; // r8d
+  int v159; // r14d
+  unsigned int v160; // ecx
+  int v161; // ebx
+  int v162; // r13d
+  int v163; // ebx
+  unsigned int v164; // ebp
+  int v165; // r11d
+  int v166; // r12d
+  int v167; // r11d
+  int v168; // r10d
+  int v169; // esi
+  int v170; // r10d
+  int v171; // r9d
+  int v172; // r14d
+  int v173; // r9d
+  int v174; // r8d
+  int v175; // ebx
+  int v176; // r8d
+  unsigned int v177; // r13d
+  int v178; // eax
+  int v179; // r11d
+  int v180; // eax
+  unsigned int v181; // r12d
+  int v182; // edx
+  int v183; // r10d
+  int v184; // edx
+  unsigned int v185; // esi
+  int v186; // edi
+  int v187; // r9d
+  int v188; // ecx
+  unsigned int v189; // r12d
+  int v190; // ebx
+  int v191; // r8d
+  int v192; // edi
+  unsigned int v193; // esi
+  int v194; // ebx
+  int v195; // eax
+  int v196; // r11d
+  unsigned int v197; // r12d
+  int v198; // ebx
+  int v199; // edx
+  int v200; // r10d
+  int v201; // ebx
+  int v202; // ecx
+  int v203; // esi
+  int v204; // r9d
+  __int64 result; // rax
+  int v206; // r8d
+  unsigned int v207; // [rsp+0h] [rbp-7Ch]
+  unsigned int v208; // [rsp+0h] [rbp-7Ch]
+  unsigned int v209; // [rsp+0h] [rbp-7Ch]
+  unsigned int v210; // [rsp+0h] [rbp-7Ch]
+  unsigned int v211; // [rsp+4h] [rbp-78h]
+  unsigned int v212; // [rsp+4h] [rbp-78h]
+  unsigned int v213; // [rsp+4h] [rbp-78h]
+  unsigned int v214; // [rsp+8h] [rbp-74h]
+  unsigned int v215; // [rsp+8h] [rbp-74h]
+  unsigned int v216; // [rsp+8h] [rbp-74h]
+  unsigned int v217; // [rsp+8h] [rbp-74h]
+  unsigned int v218; // [rsp+Ch] [rbp-70h]
+  unsigned int v219; // [rsp+Ch] [rbp-70h]
+  unsigned int v220; // [rsp+Ch] [rbp-70h]
+  unsigned int v221; // [rsp+10h] [rbp-6Ch]
+  unsigned int v222; // [rsp+10h] [rbp-6Ch]
+  unsigned int v223; // [rsp+10h] [rbp-6Ch]
+  unsigned int v224; // [rsp+14h] [rbp-68h]
+  unsigned int v225; // [rsp+14h] [rbp-68h]
+  unsigned int v226; // [rsp+14h] [rbp-68h]
+  unsigned int v227; // [rsp+18h] [rbp-64h]
+  unsigned int v228; // [rsp+18h] [rbp-64h]
+  unsigned int v229; // [rsp+1Ch] [rbp-60h]
+  unsigned int v230; // [rsp+20h] [rbp-5Ch]
+  unsigned int v231; // [rsp+20h] [rbp-5Ch]
+  unsigned int v232; // [rsp+24h] [rbp-58h]
+  unsigned int v233; // [rsp+24h] [rbp-58h]
+  unsigned int v234; // [rsp+24h] [rbp-58h]
+  unsigned int v235; // [rsp+28h] [rbp-54h]
+  unsigned int v236; // [rsp+28h] [rbp-54h]
+  unsigned int v237; // [rsp+2Ch] [rbp-50h]
+  unsigned int v238; // [rsp+2Ch] [rbp-50h]
+  unsigned int v239; // [rsp+30h] [rbp-4Ch]
+  unsigned int v240; // [rsp+34h] [rbp-48h]
+  unsigned int v241; // [rsp+34h] [rbp-48h]
 
+  v2 = *a1;
+  v3 = *a1 + 0x75A999BB;
+  v4 = *a1 - 0x115BBE69;
+  v207 = a1[1];
+  v214 = a1[2];
+  v5 = (v3 & 0x615B450C ^ ~v3 & 0xB937B0B) + v207 + (__ROL4__(v3, 7) ^ __ROR4__(v3, 11) ^ __ROR4__(v3, 6)) - 0x6CFF68B9;
+  v6 = v5 - 1211610007;
+  v7 = (v5 - 1211610007) & v3;
+  v8 = v5 - 1211610007;
+  v9 = (__ROL4__(v4, 10) ^ __ROR4__(v4, 13) ^ __ROR4__(v4, 2)) + (v4 & 0xE359765C ^ 0x14848000) + 1508970993 + v5;
+  v10 = (v7 ^ ~v6 & 0x615B450C) + v214 + (__ROL4__(v6, 7) ^ __ROR4__(v8, 11) ^ __ROR4__(v6, 6)) + 194214667;
+  v11 = v10 - 367786252;
+  v12 = (v10 - 367786252) & v6;
+  v13 = (__ROL4__(v9, 10) ^ __ROR4__(v9, 13) ^ __ROR4__(v9, 2))
+      + (v4 & 0xB48DF20C ^ v9 & (v4 ^ 0xB48DF20C))
+      - 1841331548
+      + v10;
+  v218 = a1[3];
+  v14 = a1[5];
+  v15 = (v12 ^ v3 & ~v11) + v218 + (__ROL4__(v11, 7) ^ __ROR4__(v11, 11) ^ __ROR4__(v11, 6)) + 1633371404;
+  v16 = v15 + 1604997345;
+  v17 = (__ROL4__(v13, 10) ^ __ROR4__(v13, 2) ^ __ROR4__(v13, 13)) + (v9 & v4 ^ v13 & (v9 ^ v4)) - 1424204075 + v15;
+  v224 = a1[4];
+  v18 = (v16 & v11 ^ v6 & ~v16) + v3 + v224 - 670586216 + (__ROR4__(v16, 6) ^ __ROR4__(v16, 11) ^ __ROL4__(v16, 7));
+  v19 = v18 + v4;
+  v20 = (__ROL4__(v17, 10) ^ __ROR4__(v17, 2) ^ __ROR4__(v17, 13)) + (v13 & v9 ^ v17 & (v13 ^ v9)) + v18;
+  v21 = (v19 & v16 ^ v11 & ~v19) + v6 + v14 + 310598401 + (__ROR4__(v19, 6) ^ __ROR4__(v19, 11) ^ __ROL4__(v19, 7));
+  v22 = v21 + v9;
+  v23 = (__ROL4__(v20, 10) ^ __ROR4__(v20, 2) ^ __ROR4__(v20, 13)) + (v17 & v13 ^ v20 & (v17 ^ v13)) + v21;
+  v232 = a1[6];
+  v24 = (v22 & v19 ^ v16 & ~v22) + v11 + v232 + 607225278 + (__ROR4__(v22, 6) ^ __ROR4__(v22, 11) ^ __ROL4__(v22, 7));
+  v25 = v24 + v13;
+  v26 = (__ROL4__(v23, 10) ^ __ROR4__(v23, 2) ^ __ROR4__(v23, 13)) + (v20 & v17 ^ v23 & (v20 ^ v17)) + v24;
+  v221 = a1[7];
+  v27 = (v25 & v22 ^ v19 & ~v25) + v16 + v221 + 1426881987 + (__ROR4__(v25, 6) ^ __ROR4__(v25, 11) ^ __ROL4__(v25, 7));
+  v28 = v27 + v17;
+  v29 = (__ROL4__(v26, 10) ^ __ROR4__(v26, 2) ^ __ROR4__(v26, 13)) + (v23 & v20 ^ v26 & (v23 ^ v20)) + v27;
+  v30 = (v28 & v25 ^ v22 & ~v28) + v19 + (__ROL4__(v28, 7) ^ __ROR4__(v28, 6) ^ __ROR4__(v28, 11)) - 621691669;
+  v31 = v30 + v20;
+  v32 = (__ROL4__(v29, 10) ^ __ROR4__(v29, 2) ^ __ROR4__(v29, 13)) + (v26 & v23 ^ v29 & (v26 ^ v23)) + v30;
+  v33 = (v31 & v28 ^ v25 & ~v31) + v22 + (__ROL4__(v31, 7) ^ __ROR4__(v31, 6) ^ __ROR4__(v31, 11)) - 903008386;
+  v34 = v33 + v23;
+  v35 = (__ROL4__(v32, 10) ^ __ROR4__(v32, 2) ^ __ROR4__(v32, 13)) + (v29 & v26 ^ v32 & (v29 ^ v26)) + v33;
+  v36 = (v34 & v31 ^ v28 & ~v34) + v25 + (__ROL4__(v34, 7) ^ __ROR4__(v34, 6) ^ __ROR4__(v34, 11)) - 1680079193;
+  v37 = v36 + v26;
+  v38 = (__ROL4__(v35, 10) ^ __ROR4__(v35, 2) ^ __ROR4__(v35, 13)) + (v32 & v29 ^ v35 & (v32 ^ v29)) + v36;
+  v39 = (v37 & v34 ^ v31 & ~v37) + v28 + (__ROL4__(v37, 7) ^ __ROR4__(v37, 6) ^ __ROR4__(v37, 11)) - 1046744276;
+  v40 = v39 + v29;
+  v41 = (__ROL4__(v38, 10) ^ __ROR4__(v38, 2) ^ __ROR4__(v38, 13)) + (v35 & v32 ^ v38 & (v35 ^ v32)) + v39;
+  v42 = (v40 & v37 ^ v34 & ~v40) + v14 + v31 - 1003664910 + (__ROR4__(v40, 6) ^ __ROR4__(v40, 11) ^ __ROL4__(v40, 7));
+  v43 = v42 + v32;
+  v44 = (__ROL4__(v41, 10) ^ __ROR4__(v41, 2) ^ __ROR4__(v41, 13)) + (v38 & v35 ^ v41 & (v38 ^ v35)) + v42;
+  v211 = v232 - 190646595;
+  v45 = (v43 & v40 ^ v37 & ~v43) + v232 + v34 - 463389117 + (__ROR4__(v43, 6) ^ __ROR4__(v43, 11) ^ __ROL4__(v43, 7));
+  v46 = v45 + v35;
+  v47 = (__ROL4__(v44, 10) ^ __ROR4__(v44, 2) ^ __ROR4__(v44, 13)) + (v41 & v38 ^ v44 & (v41 ^ v38)) + v45;
+  v48 = v221 + (((v14 - 544088015) >> 10) ^ __ROL4__(v14 - 544088015, 15) ^ __ROL4__(v14 - 544088015, 13)) - 1038810446;
+  v49 = (v46 & v43 ^ v40 & ~v46) + v37 + v48 + 264347078 + (__ROR4__(v46, 6) ^ __ROR4__(v46, 11) ^ __ROL4__(v46, 7));
+  v50 = v49 + v38;
+  v51 = (__ROL4__(v47, 10) ^ __ROR4__(v47, 2) ^ __ROR4__(v47, 13)) + (v44 & v41 ^ v47 & (v44 ^ v41)) + v49;
+  v52 = ((v2 >> 3) ^ __ROR4__(v2, 7) ^ __ROL4__(v2, 14))
+      + (((v232 - 190646595) >> 10) ^ __ROL4__(v232 - 190646595, 15) ^ __ROL4__(v232 - 190646595, 13))
+      - 1733968149;
+  v53 = (v50 & v46 ^ v43 & ~v50) + v40 + v52 + 604807628 + (__ROR4__(v50, 6) ^ __ROR4__(v50, 11) ^ __ROL4__(v50, 7));
+  v54 = v53 + v41;
+  v55 = (__ROL4__(v51, 10) ^ __ROR4__(v51, 2) ^ __ROR4__(v51, 13)) + (v47 & v44 ^ v51 & (v47 ^ v44)) + v53;
+  v56 = ((v48 >> 10) ^ __ROL4__(v48, 15) ^ __ROL4__(v48, 13))
+      + v2
+      + ((v207 >> 3) ^ __ROR4__(v207, 7) ^ __ROL4__(v207, 14))
+      + 1229880704;
+  v57 = (v54 & v50 ^ v46 & ~v54) + v43 + v56 + 770255983 + (__ROR4__(v54, 6) ^ __ROR4__(v54, 11) ^ __ROL4__(v54, 7));
+  v58 = v57 + v44;
+  v59 = (__ROL4__(v55, 10) ^ __ROR4__(v55, 2) ^ __ROR4__(v55, 13)) + (v51 & v47 ^ v55 & (v51 ^ v47)) + v57;
+  v208 = v207
+       + ((v214 >> 3) ^ __ROR4__(v214, 7) ^ __ROL4__(v214, 14))
+       + ((v52 >> 10) ^ __ROL4__(v52, 15) ^ __ROL4__(v52, 13));
+  v60 = (v58 & v54 ^ v50 & ~v58) + v46 + v208 + 1249150122 + (__ROR4__(v58, 6) ^ __ROR4__(v58, 11) ^ __ROL4__(v58, 7));
+  v61 = v60 + v47;
+  v62 = (__ROL4__(v59, 10) ^ __ROR4__(v59, 2) ^ __ROR4__(v59, 13)) + (v55 & v51 ^ v59 & (v55 ^ v51)) + v60;
+  v227 = ((v56 >> 10) ^ __ROL4__(v56, 15) ^ __ROL4__(v56, 13))
+       + v214
+       + ((v218 >> 3) ^ __ROR4__(v218, 7) ^ __ROL4__(v218, 14))
+       + 440;
+  v63 = (v61 & v58 ^ v54 & ~v61) + v50 + v227 + 1555081692 + (__ROR4__(v61, 6) ^ __ROR4__(v61, 11) ^ __ROL4__(v61, 7));
+  v64 = v63 + v51;
+  v65 = (__ROL4__(v62, 10) ^ __ROR4__(v62, 2) ^ __ROR4__(v62, 13)) + (v59 & v55 ^ v62 & (v59 ^ v55)) + v63;
+  v215 = ((v208 >> 10) ^ __ROL4__(v208, 15) ^ __ROL4__(v208, 13))
+       + v218
+       + v14
+       - 544088015
+       + (__ROR4__(v224, 7) ^ __ROL4__(v224, 14) ^ (v224 >> 3));
+  v66 = (v64 & v61 ^ v58 & ~v64) + v54 + v215 + 1996064986 + (__ROR4__(v64, 6) ^ __ROR4__(v64, 11) ^ __ROL4__(v64, 7));
+  v67 = v66 + v55;
+  v68 = (__ROL4__(v65, 10) ^ __ROR4__(v65, 2) ^ __ROR4__(v65, 13)) + (v62 & v59 ^ v65 & (v62 ^ v59)) + v66;
+  v230 = ((v227 >> 10) ^ __ROL4__(v227, 15) ^ __ROL4__(v227, 13))
+       + v224
+       + v232
+       - 190646595
+       + (__ROR4__(v14, 7) ^ __ROL4__(v14, 14) ^ (v14 >> 3));
+  v69 = (v67 & v64 ^ v61 & ~v67) + v58 + v230 - 1740746414 + (__ROR4__(v67, 6) ^ __ROR4__(v67, 11) ^ __ROL4__(v67, 7));
+  v70 = v69 + v59;
+  v71 = (__ROL4__(v68, 10) ^ __ROR4__(v68, 2) ^ __ROR4__(v68, 13)) + (v65 & v62 ^ v68 & (v65 ^ v62)) + v69;
+  v219 = v48
+       + v14
+       + ((v232 >> 3) ^ __ROR4__(v232, 7) ^ __ROL4__(v232, 14))
+       + ((v215 >> 10) ^ __ROL4__(v215, 15) ^ __ROL4__(v215, 13));
+  v72 = (v70 & v67 ^ v64 & ~v70) + v61 + v219 - 1473132947 + (__ROR4__(v70, 6) ^ __ROR4__(v70, 11) ^ __ROL4__(v70, 7));
+  v73 = v72 + v62;
+  v74 = (__ROL4__(v71, 10) ^ __ROR4__(v71, 2) ^ __ROR4__(v71, 13)) + (v68 & v65 ^ v71 & (v68 ^ v65)) + v72;
+  v240 = v52
+       + v232
+       + ((v221 >> 3) ^ __ROR4__(v221, 7) ^ __ROL4__(v221, 14))
+       + ((v230 >> 10) ^ __ROL4__(v230, 15) ^ __ROL4__(v230, 13));
+  v75 = (v73 & v70 ^ v67 & ~v73) + v64 + v240 - 1341970488 + (__ROR4__(v73, 6) ^ __ROR4__(v73, 11) ^ __ROL4__(v73, 7));
+  v76 = v75 + v65;
+  v77 = (__ROL4__(v74, 10) ^ __ROR4__(v74, 2) ^ __ROR4__(v74, 13)) + (v71 & v68 ^ v74 & (v71 ^ v68)) + v75;
+  v222 = (__ROL4__(v219, 15) ^ __ROL4__(v219, 13) ^ (v219 >> 10)) + v221 + v56 + 873191260;
+  v78 = (v76 & v73 ^ v70 & ~v76) + v67 + v222 - 1084653625 + (__ROR4__(v76, 6) ^ __ROR4__(v76, 11) ^ __ROL4__(v76, 7));
+  v79 = v78 + v68;
+  v80 = (__ROL4__(v77, 10) ^ __ROR4__(v77, 2) ^ __ROR4__(v77, 13)) + (v74 & v71 ^ v77 & (v74 ^ v71)) + v78;
+  v225 = v208 + ((v240 >> 10) ^ __ROL4__(v240, 15) ^ __ROL4__(v240, 13)) - 15818609;
+  v81 = (v79 & v76 ^ v73 & ~v79) + v70 + v225 - 958395405 + (__ROR4__(v79, 6) ^ __ROR4__(v79, 11) ^ __ROL4__(v79, 7));
+  v82 = v81 + v71;
+  v83 = (__ROL4__(v80, 10) ^ __ROR4__(v80, 2) ^ __ROR4__(v80, 13)) + (v77 & v74 ^ v80 & (v77 ^ v74)) + v81;
+  v84 = v227 + ((v222 >> 10) ^ __ROL4__(v222, 15) ^ __ROL4__(v222, 13)) + 1229880704;
+  v85 = (v82 & v79 ^ v76 & ~v82) + v73 + v84 - 710438585 + (__ROR4__(v82, 6) ^ __ROR4__(v82, 11) ^ __ROL4__(v82, 7));
+  v86 = v85 + v74;
+  v87 = (__ROL4__(v83, 10) ^ __ROR4__(v83, 2) ^ __ROR4__(v83, 13)) + (v80 & v77 ^ v83 & (v80 ^ v77)) + v85;
+  v233 = v215 + ((v225 >> 10) ^ __ROL4__(v225, 15) ^ __ROL4__(v225, 13)) + 1886257204;
+  v88 = (v86 & v82 ^ v79 & ~v86) + v76 + v233 + 113926993 + (__ROR4__(v86, 6) ^ __ROR4__(v86, 11) ^ __ROL4__(v86, 7));
+  v89 = v88 + v77;
+  v90 = (__ROL4__(v87, 10) ^ __ROR4__(v87, 2) ^ __ROR4__(v87, 13)) + (v83 & v80 ^ v87 & (v83 ^ v80)) + v88;
+  v235 = v230
+       + (((v14 - 544088015) >> 3) ^ __ROR4__(v14 - 544088015, 7) ^ __ROL4__(v14 - 544088015, 14))
+       + 440
+       + ((v84 >> 10) ^ __ROL4__(v84, 15) ^ __ROL4__(v84, 13));
+  v91 = (v89 & v86 ^ v82 & ~v89) + v79 + v235 + 338241895 + (__ROR4__(v89, 6) ^ __ROR4__(v89, 11) ^ __ROL4__(v89, 7));
+  v92 = v91 + v80;
+  v93 = (__ROL4__(v90, 10) ^ __ROR4__(v90, 2) ^ __ROR4__(v90, 13)) + (v87 & v83 ^ v90 & (v87 ^ v83)) + v91;
+  v237 = ((v233 >> 10) ^ __ROL4__(v233, 15) ^ __ROL4__(v233, 13))
+       + v219
+       + v14
+       - 544088015
+       + ((v211 >> 3) ^ __ROR4__(v211, 7) ^ __ROL4__(v211, 14));
+  v94 = (v92 & v89 ^ v86 & ~v92) + v82 + v237 + 666307205 + (__ROR4__(v92, 6) ^ __ROR4__(v92, 11) ^ __ROL4__(v92, 7));
+  v95 = v94 + v83;
+  v96 = (__ROL4__(v93, 10) ^ __ROR4__(v93, 2) ^ __ROR4__(v93, 13)) + (v90 & v87 ^ v93 & (v90 ^ v87)) + v94;
+  v97 = v240
+      + v211
+      + ((v48 >> 3) ^ __ROR4__(v48, 7) ^ __ROL4__(v48, 14))
+      + ((v235 >> 10) ^ __ROL4__(v235, 15) ^ __ROL4__(v235, 13));
+  v98 = (v95 & v92 ^ v89 & ~v95) + v86 + v97 + 773529912 + (__ROR4__(v95, 6) ^ __ROR4__(v95, 11) ^ __ROL4__(v95, 7));
+  v99 = v98 + v87;
+  v100 = v98 + (__ROL4__(v96, 10) ^ __ROR4__(v96, 2) ^ __ROR4__(v96, 13)) + (v93 & v90 ^ v96 & (v93 ^ v90));
+  v101 = v222
+       + v48
+       + ((v52 >> 3) ^ __ROR4__(v52, 7) ^ __ROL4__(v52, 14))
+       + ((v237 >> 10) ^ __ROL4__(v237, 15) ^ __ROL4__(v237, 13));
+  v102 = (v99 & v95 ^ v92 & ~v99) + v89 + v101 + 1294757372 + (__ROR4__(v99, 6) ^ __ROR4__(v99, 11) ^ __ROL4__(v99, 7));
+  v103 = v102 + v90;
+  v104 = v102 + (__ROL4__(v100, 10) ^ __ROR4__(v100, 2) ^ __ROR4__(v100, 13)) + (v96 & v93 ^ v100 & (v96 ^ v93));
+  v239 = ((v97 >> 10) ^ __ROL4__(v97, 15) ^ __ROL4__(v97, 13))
+       + v52
+       + ((v56 >> 3) ^ __ROR4__(v56, 7) ^ __ROL4__(v56, 14))
+       + v225;
+  v105 = (v103 & v99 ^ v95 & ~v103)
+       + v92
+       + v239
+       + 1396182291
+       + (__ROR4__(v103, 6) ^ __ROR4__(v103, 11) ^ __ROL4__(v103, 7));
+  v106 = v105 + v93;
+  v107 = v105 + (__ROL4__(v104, 10) ^ __ROR4__(v104, 2) ^ __ROR4__(v104, 13)) + (v100 & v96 ^ v104 & (v100 ^ v96));
+  v212 = ((v101 >> 10) ^ __ROL4__(v101, 15) ^ __ROL4__(v101, 13))
+       + v56
+       + ((v208 >> 3) ^ __ROR4__(v208, 7) ^ __ROL4__(v208, 14))
+       + v84;
+  v108 = (v106 & v103 ^ v99 & ~v106)
+       + v95
+       + v212
+       + 1695183700
+       + (__ROR4__(v106, 6) ^ __ROR4__(v106, 11) ^ __ROL4__(v106, 7));
+  v109 = v108 + v96;
+  v110 = v108 + (__ROL4__(v107, 10) ^ __ROR4__(v107, 2) ^ __ROR4__(v107, 13)) + (v104 & v100 ^ v107 & (v104 ^ v100));
+  v209 = ((v239 >> 10) ^ __ROL4__(v239, 15) ^ __ROL4__(v239, 13))
+       + v233
+       + v208
+       + ((v227 >> 3) ^ __ROR4__(v227, 7) ^ __ROL4__(v227, 14));
+  v111 = (v109 & v106 ^ v103 & ~v109)
+       + v99
+       + v209
+       + 1986661051
+       + (__ROR4__(v109, 6) ^ __ROR4__(v109, 11) ^ __ROL4__(v109, 7));
+  v112 = v111 + v100;
+  v113 = v111 + (__ROL4__(v110, 10) ^ __ROR4__(v110, 2) ^ __ROR4__(v110, 13)) + (v107 & v104 ^ v110 & (v107 ^ v104));
+  v228 = ((v212 >> 10) ^ __ROL4__(v212, 15) ^ __ROL4__(v212, 13))
+       + v235
+       + v227
+       + ((v215 >> 3) ^ __ROR4__(v215, 7) ^ __ROL4__(v215, 14));
+  v114 = (v112 & v109 ^ v106 & ~v112)
+       + v103
+       + v228
+       - 2117940946
+       + (__ROR4__(v112, 6) ^ __ROR4__(v112, 11) ^ __ROL4__(v112, 7));
+  v115 = v114 + v104;
+  v116 = v114 + (__ROL4__(v113, 10) ^ __ROR4__(v113, 2) ^ __ROR4__(v113, 13)) + (v110 & v107 ^ v113 & (v110 ^ v107));
+  v216 = ((v209 >> 10) ^ __ROL4__(v209, 15) ^ __ROL4__(v209, 13))
+       + v237
+       + v215
+       + ((v230 >> 3) ^ __ROR4__(v230, 7) ^ __ROL4__(v230, 14));
+  v117 = (v115 & v112 ^ v109 & ~v115)
+       + v106
+       + v216
+       - 1838011259
+       + (__ROR4__(v115, 6) ^ __ROR4__(v115, 11) ^ __ROL4__(v115, 7));
+  v118 = v117 + v107;
+  v119 = v117 + (__ROL4__(v116, 10) ^ __ROR4__(v116, 2) ^ __ROR4__(v116, 13)) + (v113 & v110 ^ v116 & (v113 ^ v110));
+  v229 = ((v228 >> 10) ^ __ROL4__(v228, 15) ^ __ROL4__(v228, 13))
+       + v97
+       + v230
+       + ((v219 >> 3) ^ __ROR4__(v219, 7) ^ __ROL4__(v219, 14));
+  v120 = (v118 & v115 ^ v112 & ~v118)
+       + v109
+       + v229
+       - 1564481375
+       + (__ROR4__(v118, 6) ^ __ROR4__(v118, 11) ^ __ROL4__(v118, 7));
+  v121 = v120 + v110;
+  v122 = (__ROL4__(v119, 10) ^ __ROR4__(v119, 2) ^ __ROR4__(v119, 13)) + (v116 & v113 ^ v119 & (v116 ^ v113)) + v120;
+  v220 = ((v216 >> 10) ^ __ROL4__(v216, 15) ^ __ROL4__(v216, 13))
+       + v101
+       + v219
+       + ((v240 >> 3) ^ __ROR4__(v240, 7) ^ __ROL4__(v240, 14));
+  v123 = (v121 & v118 ^ v115 & ~v121)
+       + v112
+       + v220
+       - 1474664885
+       + (__ROR4__(v121, 6) ^ __ROR4__(v121, 11) ^ __ROL4__(v121, 7));
+  v124 = v123 + v113;
+  v125 = (__ROL4__(v122, 10) ^ __ROR4__(v122, 2) ^ __ROR4__(v122, 13)) + (v119 & v116 ^ v122 & (v119 ^ v116)) + v123;
+  v231 = ((v229 >> 10) ^ __ROL4__(v229, 15) ^ __ROL4__(v229, 13))
+       + v239
+       + v240
+       + ((v222 >> 3) ^ __ROR4__(v222, 7) ^ __ROL4__(v222, 14));
+  v126 = (v124 & v121 ^ v118 & ~v124)
+       + v115
+       + v231
+       - 1035236496
+       + (__ROR4__(v124, 6) ^ __ROR4__(v124, 11) ^ __ROL4__(v124, 7));
+  v127 = v126 + v116;
+  v128 = (__ROL4__(v125, 10) ^ __ROR4__(v125, 2) ^ __ROR4__(v125, 13)) + (v122 & v119 ^ v125 & (v122 ^ v119)) + v126;
+  v223 = ((v220 >> 10) ^ __ROL4__(v220, 15) ^ __ROL4__(v220, 13))
+       + v212
+       + v222
+       + ((v225 >> 3) ^ __ROR4__(v225, 7) ^ __ROL4__(v225, 14));
+  v129 = (v127 & v124 ^ v121 & ~v127)
+       + (__ROR4__(v127, 6) ^ __ROR4__(v127, 11) ^ __ROL4__(v127, 7))
+       + v118
+       + v223
+       - 949202525;
+  v130 = v129 + v119;
+  v131 = (__ROL4__(v128, 10) ^ __ROR4__(v128, 2) ^ __ROR4__(v128, 13)) + (v125 & v122 ^ v128 & (v125 ^ v122)) + v129;
+  v132 = v233;
+  v226 = ((v231 >> 10) ^ __ROL4__(v231, 15) ^ __ROL4__(v231, 13))
+       + v209
+       + v225
+       + ((v84 >> 3) ^ __ROR4__(v84, 7) ^ __ROL4__(v84, 14));
+  v133 = (v130 & v127 ^ v124 & ~v130)
+       + v121
+       + v226
+       - 778901479
+       + (__ROR4__(v130, 6) ^ __ROR4__(v130, 11) ^ __ROL4__(v130, 7));
+  v134 = v133 + v122;
+  v135 = (__ROL4__(v131, 10) ^ __ROR4__(v131, 2) ^ __ROR4__(v131, 13)) + (v128 & v125 ^ v131 & (v128 ^ v125)) + v133;
+  v136 = v235;
+  v234 = ((v223 >> 10) ^ __ROL4__(v223, 15) ^ __ROL4__(v223, 13))
+       + v228
+       + v84
+       + ((v233 >> 3) ^ __ROR4__(v233, 7) ^ __ROL4__(v233, 14));
+  v137 = (v134 & v130 ^ v127 & ~v134)
+       + v124
+       + v234
+       - 694614492
+       + (__ROR4__(v134, 6) ^ __ROR4__(v134, 11) ^ __ROL4__(v134, 7));
+  v138 = v137 + v125;
+  v139 = (__ROL4__(v135, 10) ^ __ROR4__(v135, 2) ^ __ROR4__(v135, 13)) + (v131 & v128 ^ v135 & (v131 ^ v128)) + v137;
+  v140 = ((v226 >> 10) ^ __ROL4__(v226, 15) ^ __ROL4__(v226, 13))
+       + v216
+       + v132
+       + ((v235 >> 3) ^ __ROR4__(v235, 7) ^ __ROL4__(v235, 14));
+  v141 = v127 + v140 - 200395387;
+  v236 = v140;
+  v142 = v237;
+  v143 = (v138 & v134 ^ v130 & ~v138) + v141 + (__ROR4__(v138, 6) ^ __ROR4__(v138, 11) ^ __ROL4__(v138, 7));
+  v144 = v143 + v128;
+  v145 = (__ROL4__(v139, 10) ^ __ROR4__(v139, 2) ^ __ROR4__(v139, 13)) + (v135 & v131 ^ v139 & (v135 ^ v131)) + v143;
+  v238 = ((v234 >> 10) ^ __ROL4__(v234, 15) ^ __ROL4__(v234, 13))
+       + v229
+       + v136
+       + ((v237 >> 3) ^ __ROR4__(v237, 7) ^ __ROL4__(v237, 14));
+  v146 = (v144 & v138 ^ v134 & ~v144)
+       + v130
+       + v238
+       + 0x106AA070
+       + (__ROR4__(v144, 6) ^ __ROR4__(v144, 11) ^ __ROL4__(v144, 7));
+  v147 = v146 + v131;
+  v148 = (__ROL4__(v145, 10) ^ __ROR4__(v145, 2) ^ __ROR4__(v145, 13)) + (v139 & v135 ^ v145 & (v139 ^ v135)) + v146;
+  v241 = v220
+       + v142
+       + ((v97 >> 3) ^ __ROR4__(v97, 7) ^ __ROL4__(v97, 14))
+       + ((v236 >> 10) ^ __ROL4__(v236, 15) ^ __ROL4__(v236, 13));
+  v149 = (v147 & v144 ^ v138 & ~v147)
+       + v134
+       + v241
+       + 430227734
+       + (__ROR4__(v147, 6) ^ __ROR4__(v147, 11) ^ __ROL4__(v147, 7));
+  v150 = v135 + v149;
+  v151 = (v145 & v139 ^ v148 & (v145 ^ v139)) + (__ROL4__(v148, 10) ^ __ROR4__(v148, 2) ^ __ROR4__(v148, 13)) + v149;
+  v152 = ((v238 >> 10) ^ __ROL4__(v238, 15) ^ __ROL4__(v238, 13))
+       + v231
+       + (__ROR4__(v101, 7) ^ __ROL4__(v101, 14) ^ (v101 >> 3))
+       + v97;
+  v153 = (v150 & v147 ^ v144 & ~v150)
+       + (__ROR4__(v150, 6) ^ __ROR4__(v150, 11) ^ __ROL4__(v150, 7))
+       + v138
+       + v152
+       + 506948616;
+  v154 = v153 + v139;
+  v155 = (__ROL4__(v151, 10) ^ __ROR4__(v151, 2) ^ __ROR4__(v151, 13)) + (v148 & v145 ^ v151 & (v148 ^ v145)) + v153;
+  v156 = ((v241 >> 10) ^ __ROL4__(v241, 15) ^ __ROL4__(v241, 13))
+       + v223
+       + v101
+       + ((v239 >> 3) ^ __ROR4__(v239, 7) ^ __ROL4__(v239, 14));
+  v157 = (v154 & v150 ^ v147 & ~v154)
+       + v144
+       + v156
+       + 659060556
+       + (__ROR4__(v154, 6) ^ __ROR4__(v154, 11) ^ __ROL4__(v154, 7));
+  v158 = v157 + v145;
+  v159 = (__ROL4__(v155, 10) ^ __ROR4__(v155, 2) ^ __ROR4__(v155, 13)) + (v151 & v148 ^ v155 & (v151 ^ v148)) + v157;
+  v160 = ((v152 >> 10) ^ __ROL4__(v152, 15) ^ __ROL4__(v152, 13))
+       + v226
+       + v239
+       + ((v212 >> 3) ^ __ROR4__(v212, 7) ^ __ROL4__(v212, 14));
+  v161 = (v158 & v154 ^ v150 & ~v158)
+       + v147
+       + v160
+       + 883997877
+       + (__ROR4__(v158, 6) ^ __ROR4__(v158, 11) ^ __ROL4__(v158, 7));
+  v162 = v161 + v148;
+  v163 = (__ROL4__(v159, 10) ^ __ROR4__(v159, 2) ^ __ROR4__(v159, 13)) + (v155 & v151 ^ v159 & (v155 ^ v151)) + v161;
+  v164 = ((v156 >> 10) ^ __ROL4__(v156, 15) ^ __ROL4__(v156, 13))
+       + v234
+       + v212
+       + ((v209 >> 3) ^ __ROR4__(v209, 7) ^ __ROL4__(v209, 14));
+  v165 = (v162 & v158 ^ v154 & ~v162)
+       + v150
+       + v164
+       + 958139571
+       + (__ROR4__(v162, 6) ^ __ROR4__(v162, 11) ^ __ROL4__(v162, 7));
+  v166 = v165 + v151;
+  v167 = (__ROL4__(v163, 10) ^ __ROR4__(v163, 2) ^ __ROR4__(v163, 13)) + (v159 & v155 ^ v163 & (v159 ^ v155)) + v165;
+  v210 = ((v160 >> 10) ^ __ROL4__(v160, 15) ^ __ROL4__(v160, 13))
+       + v236
+       + v209
+       + ((v228 >> 3) ^ __ROR4__(v228, 7) ^ __ROL4__(v228, 14));
+  v168 = (v166 & v162 ^ v158 & ~v166)
+       + v154
+       + v210
+       + 1322822218
+       + (__ROR4__(v166, 6) ^ __ROR4__(v166, 11) ^ __ROL4__(v166, 7));
+  v169 = v155 + v168;
+  v170 = (__ROL4__(v167, 10) ^ __ROR4__(v167, 2) ^ __ROR4__(v167, 13)) + (v163 & v159 ^ v167 & (v163 ^ v159)) + v168;
+  v213 = ((v164 >> 10) ^ __ROL4__(v164, 15) ^ __ROL4__(v164, 13))
+       + v238
+       + v228
+       + ((v216 >> 3) ^ __ROR4__(v216, 7) ^ __ROL4__(v216, 14));
+  v171 = (v169 & v166 ^ v162 & ~v169)
+       + v158
+       + v213
+       + 1537002063
+       + (__ROR4__(v169, 6) ^ __ROR4__(v169, 11) ^ __ROL4__(v169, 7));
+  v172 = v171 + v159;
+  v173 = (__ROL4__(v170, 10) ^ __ROR4__(v170, 2) ^ __ROR4__(v170, 13)) + (v167 & v163 ^ v170 & (v167 ^ v163)) + v171;
+  v217 = ((v210 >> 10) ^ __ROL4__(v210, 15) ^ __ROL4__(v210, 13))
+       + v241
+       + v216
+       + ((v229 >> 3) ^ __ROR4__(v229, 7) ^ __ROL4__(v229, 14));
+  v174 = (v172 & v169 ^ v166 & ~v172)
+       + v162
+       + v217
+       + 1747873779
+       + (__ROR4__(v172, 6) ^ __ROR4__(v172, 11) ^ __ROL4__(v172, 7));
+  v175 = v174 + v163;
+  v176 = (__ROL4__(v173, 10) ^ __ROR4__(v173, 2) ^ __ROR4__(v173, 13)) + (v170 & v167 ^ v173 & (v170 ^ v167)) + v174;
+  v177 = ((v213 >> 10) ^ __ROL4__(v213, 15) ^ __ROL4__(v213, 13))
+       + v152
+       + v229
+       + ((v220 >> 3) ^ __ROR4__(v220, 7) ^ __ROL4__(v220, 14));
+  v178 = (v175 & v172 ^ v169 & ~v175)
+       + v166
+       + v177
+       + 1955562222
+       + (__ROR4__(v175, 6) ^ __ROR4__(v175, 11) ^ __ROL4__(v175, 7));
+  v179 = v178 + v167;
+  v180 = (__ROL4__(v176, 10) ^ __ROR4__(v176, 2) ^ __ROR4__(v176, 13)) + (v173 & v170 ^ v176 & (v173 ^ v170)) + v178;
+  v181 = ((v217 >> 10) ^ __ROL4__(v217, 15) ^ __ROL4__(v217, 13))
+       + v156
+       + v220
+       + ((v231 >> 3) ^ __ROR4__(v231, 7) ^ __ROL4__(v231, 14));
+  v182 = (v179 & v175 ^ v172 & ~v179)
+       + v169
+       + v181
+       + 2024104815
+       + (__ROR4__(v179, 6) ^ __ROR4__(v179, 11) ^ __ROL4__(v179, 7));
+  v183 = v182 + v170;
+  v184 = (__ROL4__(v180, 10) ^ __ROR4__(v180, 2) ^ __ROR4__(v180, 13)) + (v176 & v173 ^ v180 & (v176 ^ v173)) + v182;
+  v185 = ((v177 >> 10) ^ __ROL4__(v177, 15) ^ __ROL4__(v177, 13))
+       + v160
+       + v231
+       + ((v223 >> 3) ^ __ROR4__(v223, 7) ^ __ROL4__(v223, 14));
+  v186 = (v183 & v179 ^ v175 & ~v183)
+       + v172
+       + v185
+       - 2067236844
+       + (__ROR4__(v183, 6) ^ __ROR4__(v183, 11) ^ __ROL4__(v183, 7));
+  v187 = v186 + v173;
+  v188 = v186 + (__ROL4__(v184, 10) ^ __ROR4__(v184, 2) ^ __ROR4__(v184, 13)) + (v180 & v176 ^ v184 & (v180 ^ v176));
+  v189 = v164
+       + v223
+       + ((v226 >> 3) ^ __ROR4__(v226, 7) ^ __ROL4__(v226, 14))
+       + ((v181 >> 10) ^ __ROL4__(v181, 15) ^ __ROL4__(v181, 13));
+  v190 = (v187 & v183 ^ v179 & ~v187)
+       + (__ROR4__(v187, 6) ^ __ROR4__(v187, 11) ^ __ROL4__(v187, 7))
+       + v175
+       + v189
+       - 1933114872;
+  v191 = v190 + v176;
+  v192 = v190 + (__ROL4__(v188, 10) ^ __ROR4__(v188, 2) ^ __ROR4__(v188, 13)) + (v184 & v180 ^ v188 & (v184 ^ v180));
+  v193 = v210
+       + v226
+       + ((v234 >> 3) ^ __ROR4__(v234, 7) ^ __ROL4__(v234, 14))
+       + ((v185 >> 10) ^ __ROL4__(v185, 15) ^ __ROL4__(v185, 13));
+  v194 = (v191 & v187 ^ v183 & ~v191)
+       + v179
+       + v193
+       - 1866530822
+       + (__ROR4__(v191, 6) ^ __ROR4__(v191, 11) ^ __ROL4__(v191, 7));
+  v195 = v194 + v180;
+  v196 = v194 + (__ROL4__(v192, 10) ^ __ROR4__(v192, 2) ^ __ROR4__(v192, 13)) + (v188 & v184 ^ v192 & (v188 ^ v184));
+  v197 = v213
+       + v234
+       + ((v236 >> 3) ^ __ROR4__(v236, 7) ^ __ROL4__(v236, 14))
+       + ((v189 >> 10) ^ __ROL4__(v189, 15) ^ __ROL4__(v189, 13));
+  v198 = (v195 & v191 ^ v187 & ~v195)
+       + v183
+       + v197
+       - 1538233109
+       + (__ROR4__(v195, 6) ^ __ROR4__(v195, 11) ^ __ROL4__(v195, 7));
+  v199 = v198 + v184;
+  v200 = v198 + (__ROL4__(v196, 10) ^ __ROR4__(v196, 2) ^ __ROR4__(v196, 13)) + (v192 & v188 ^ v196 & (v192 ^ v188));
+  v201 = (v199 & v195 ^ v191 & ~v199)
+       + (__ROL4__(v199, 7) ^ __ROR4__(v199, 11) ^ __ROR4__(v199, 6))
+       + v187
+       + ((v193 >> 10) ^ __ROL4__(v193, 15) ^ __ROL4__(v193, 13))
+       + v217
+       + v236
+       + ((v238 >> 3) ^ __ROR4__(v238, 7) ^ __ROL4__(v238, 14))
+       - 1090935817;
+  v202 = v201 + v188;
+  v203 = v201 + (v196 & v192 ^ v200 & (v196 ^ v192)) + (__ROL4__(v200, 10) ^ __ROR4__(v200, 13) ^ __ROR4__(v200, 2));
+  v204 = v195 & ~v202;
+  result = (unsigned int)(v195 + 1541459225);
+  v206 = (v202 & v199 ^ v204)
+       + (__ROL4__(v202, 7) ^ __ROR4__(v202, 11) ^ __ROR4__(v202, 6))
+       + v177
+       + v238
+       + (__ROR4__(v241, 7) ^ __ROL4__(v241, 14) ^ (v241 >> 3))
+       - 965641998
+       + ((v197 >> 10) ^ __ROL4__(v197, 13) ^ __ROL4__(v197, 15))
+       + v191;
+  a2[4] = v192 + v206 + 1359893119;
+  a2[5] = v202 - 1694144372;
+  a2[6] = v199 + 528734635;
+  a2[7] = result;
+  *(__m128i *)a2 = _mm_unpacklo_epi64(
+                     _mm_unpacklo_epi32(
+                       _mm_cvtsi32_si128(
+                         (__ROL4__(v203, 10) ^ __ROR4__(v203, 13) ^ __ROR4__(v203, 2))
+                       + (v200 & v196 ^ v203 & (v200 ^ (unsigned int)v196))
+                       + 1779033703
+                       + v206),
+                       _mm_cvtsi32_si128(v203 - 1150833019)),
+                     _mm_unpacklo_epi32(_mm_cvtsi32_si128(v200 + 1013904242), _mm_cvtsi32_si128(v196 - 1521486534)));
+  return result;
+}
